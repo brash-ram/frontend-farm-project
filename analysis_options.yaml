@@ -1,0 +1,14 @@
+include: package:zekfad_lints/untyped/flutter.yaml
+
+analyzer:
+  exclude:
+    - legacy/**
+    - build/**
+    # - lib/**.gform.dart
+    - lib/**.g.dart
+    - lib/**.swagger.dart
+    - lib/**.chopper.dart
+
+linter:
+  rules:
+    diagnostic_describe_all_properties: false

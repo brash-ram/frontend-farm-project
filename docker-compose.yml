@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  app_builder:
+    build: .
+    container_name: app-builder
+    volumes:
+      - ./build/apk:/root/apk
+      - ./web:/root/apk

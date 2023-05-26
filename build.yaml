@@ -1,0 +1,72 @@
+targets:
+  $default:
+    auto_apply_builders: false
+
+  # Swagger API generator
+  api:
+    auto_apply_builders: false
+    sources:
+      include:
+        - lib/api/schema/**
+    builders:
+      swagger_dart_code_generator:
+        enabled: true
+        generate_for:
+          - lib/api/schema/**.json
+        options:
+          input_folder: lib/api/schema
+          output_folder: lib/api
+          cut_from_model_names: (Dto|DTO)
+          exclude_paths:
+            - '\/actuator\/.*'
+      chopper_generator:
+        enabled: true
+      json_serializable:
+        enabled: true
+
+  # Auto Route generator
+  router:
+    auto_apply_builders: false
+    sources:
+      include:
+        - lib/widgets/screens/**
+        - lib/router/**
+    builders:
+      auto_route_generator:auto_route_generator:
+        enabled: true
+        generate_for:
+          - lib/widgets/screens/**_screen.dart
+        options:
+          enable_cached_builds: true
+      auto_route_generator:auto_router_generator:
+        enabled: true
+        generate_for:
+          - lib/router/app_router.dart
+        options:
+          enable_cached_builds: true
+
+  # Riverpod state management generator
+  riverpod:
+    dependencies:
+      - farm_project:api
+    auto_apply_builders: false
+    sources:
+      include:
+        - lib/providers/**
+    builders:
+      riverpod_generator:
+        options:
+          provider_name_suffix: "Provider" # (default)
+          provider_family_name_suffix: "Provider" # (default)
+
+  # Reactive forms generator
+  forms:
+    dependencies:
+      - farm_project:api
+    auto_apply_builders: false
+    sources:
+      include:
+        - lib/widgets/forms/**
+    builders:
+      reactive_forms_generator:
+        enabled: true

@@ -1,0 +1,170 @@
+{
+  "@@locale": "en",
+  "@@context": "App strings",
+  "placeholder": "Placeholder",
+  "@placeholder": {
+    "description": "Placeholder"
+  },
+  "appTitle": "Farm Project",
+  "@appTitle": {
+    "description": "App title"
+  },
+  "authScreenSignIn": "Sign in",
+  "@authScreenSignIn": {
+    "description": "Auth screen sign in"
+  },
+  "authScreenVerification": "Verification",
+  "@authScreenVerification": {
+    "description": "Auth screen verification"
+  },
+  "authScreenSignUp": "Sign up",
+  "@authScreenSignUp": {
+    "description": "Auth screen sign up"
+  },
+  "adminEditUserScreen": "Editing {user}",
+  "@adminEditUserScreen": {
+    "description": "Admin user settings screen",
+    "placeholders": {
+      "user": {
+        "type": "String",
+        "description": "Username"
+      }
+    }
+  },
+  "adminUsersScreen": "Users",
+  "@adminUsersScreen": {
+    "description": "Admin users screen"
+  },
+  "userProfileScreen": "User profile",
+  "@userProfileScreen": {
+    "description": "User profile screen"
+  },
+  "userSettingsScreen": "User settings",
+  "@userSettingsScreen": {
+    "description": "User settings screen"
+  },
+  "email": "E-mail",
+  "@email": {
+    "description": "User E-mail"
+  },
+  "emailCode": "Verification code",
+  "@emailCode": {
+    "description": "Email verification code"
+  },
+  "username": "Username",
+  "@username": {
+    "description": "User username"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "User password"
+  },
+  "fullName": "Full name",
+  "@fullName": {
+    "description": "User full name"
+  },
+  "userBio": "User bio",
+  "@userBio": {
+    "description": "User bio"
+  },
+  "signIn": "Sign in",
+  "@signIn": {
+    "description": "Sign in"
+  },
+  "signUp": "Sign up",
+  "@signUp": {
+    "description": "Sign up"
+  },
+  "singOut": "Sign out",
+  "@singOut": {
+    "description": "Sing out"
+  },
+  "verify": "Verify",
+  "@verify": {
+    "description": "verify"
+  },
+  "sendCode": "Send code",
+  "@sendCode": {
+    "description": "Send code"
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save"
+  },
+  "formErrorRequired": "Required",
+  "@formErrorRequired": {
+    "description": "Form error required"
+  },
+  "formErrorFullNameRequired": "Full name is required",
+  "@formErrorFullNameRequired": {
+    "description": "Form error full name is required"
+  },
+  "formErrorEmailRequired": "Email is required",
+  "@formErrorEmailRequired": {
+    "description": "Form error email is required"
+  },
+  "formErrorEmailInvalid": "Invalid e-mail",
+  "@formErrorEmailInvalid": {
+    "description": "Form error email is invalid"
+  },
+  "formErrorEmailTaken": "This e-mail is taken",
+  "@formErrorEmailTaken": {
+    "description": "Form error email taken"
+  },
+  "formErrorPasswordRequired": "Password is required",
+  "@formErrorPasswordRequired": {
+    "description": "Form error password is required"
+  },
+  "formErrorCodeRequired": "Confirmation code is required",
+  "@formErrorCodeRequired": {
+    "description": "Form error confirmation code is required"
+  },
+  "formErrorCodeLength": "Confirmation code is too short",
+  "@formErrorCodeLength": {
+    "description": "Form error confirmation code is too short"
+  },
+  "formErrorInvalidCredentials": "Invalid e-mail or password",
+  "@formErrorInvalidCredentials": {
+    "description": "Form error invalid credentials"
+  },
+  "allProductsScreen": "All products",
+  "@allProductsScreen": {
+    "description": "Products list screen"
+  },
+  "myProductsScreen": "My products",
+  "@myProductsScreen": {
+    "description": "My products screen"
+  },
+  "createProductScreen": "Create product",
+  "@createProductScreen": {
+    "description": "Create product screen"
+  },
+  "productTagEco": "Eco",
+  "@productTagEco": {
+    "description": "Product tag ECO"
+  },
+  "productTagHalal": "Halal",
+  "@productTagHalal": {
+    "description": "Product tag Halal"
+  },
+  "productTagPost": "Post",
+  "@productTagPost": {
+    "description": "Product tag Post"
+  },
+  "productTagUnknown": "Unknown",
+  "@productTagUnknown": {
+    "description": "Product tag Unknown"
+  },
+  "wholesalePrice": "Wholesale price",
+  "@wholesalePrice": {
+    "description": "Wholesale price"
+  },
+  "price": "Price",
+  "@price": {
+    "description": "Price"
+  }
+}
