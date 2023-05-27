@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../extensions.dart';
 import '../../router.dart';
+import '../forms.dart';
 
 
 @RoutePage()
@@ -12,23 +13,22 @@ class CreateProductSubScreen extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
       leading: const AutoLeadingButton(),
-      title: const Text('Main'),
+      title: context.localizations.createProductScreen.widget,
     ),
     backgroundColor: Colors.transparent,
-    body: Column(
+    body: ListView(
+      // mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: Column(
-            children: [
-              'test'.widget,
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: ElevatedButton(
-              //     child: const Text('User profile'),
-              //     onPressed: () async => context.router.push(const UserProfileRoute()),
-              //   ),
-              // ),
-            ],
+          child: Card(
+            elevation: 8,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 350),
+                child: AddProductForm(),
+              ),
+            ),
           ),
         ),
       ],

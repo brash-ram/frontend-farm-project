@@ -5,8 +5,8 @@ analyzer:
     - legacy/**
     - build/**
     # - lib/**.gform.dart
-    - lib/**.g.dart
-    - lib/**.swagger.dart
+    # - lib/**.g.dart
+    # - lib/**.swagger.dart
     - lib/**.chopper.dart
 
 linter:

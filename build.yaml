@@ -17,6 +17,13 @@ targets:
           input_folder: lib/api/schema
           output_folder: lib/api
           cut_from_model_names: (Dto|DTO)
+          response_override_value_map:
+            - url: '/api/product/getProduct/unit'
+              method: get
+              overridden_value: 'List<dynamic>'
+            - url: '/news/latest'
+              method: put
+              overridden_value: 'MyPerfectType'
           exclude_paths:
             - '\/actuator\/.*'
       chopper_generator:

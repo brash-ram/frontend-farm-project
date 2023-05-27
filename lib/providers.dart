@@ -1,5 +1,6 @@
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 
+export 'providers/app_config.dart';
 export 'providers/authentication.dart';
 export 'providers/global_container.dart';
 export 'providers/products.dart';

@@ -19,6 +19,7 @@ class MyProductsSubScreen extends StatelessWidget {
     backgroundColor: Colors.transparent,
     body: Consumer(
       builder: (context, ref, child) => ref.watch(myProductsListProvider).render(
+        skipLoadingOnRefresh: false,
         (data) => ListView(
           children: [
             // ProductCard(),

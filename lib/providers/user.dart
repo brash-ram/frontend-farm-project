@@ -17,6 +17,7 @@ class UserNotifier extends AsyncNotifier<UserInfo?> {
     email: 'missing@e.mail',
     dateRegistration: 0,
     roles: [],
+    rating: 0,
   );
 
   AsyncValue<UserInfo?> _dataState(UserInfo? user) =>

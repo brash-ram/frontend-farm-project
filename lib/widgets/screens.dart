@@ -1,6 +1,8 @@
 export 'screens/all_products_sub_screen.dart';
 export 'screens/auth_screen.dart';
 export 'screens/auth_sub_screen.dart';
+export 'screens/cart_products_sub_screen.dart';
+export 'screens/courses_screen.dart';
 export 'screens/create_product_sub_screen.dart';
 export 'screens/home_screen.dart';
 export 'screens/my_products_sub_screen.dart';

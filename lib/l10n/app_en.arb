@@ -21,6 +21,10 @@
   "@authScreenSignUp": {
     "description": "Auth screen sign up"
   },
+  "coursesScreen": "Courses",
+  "@coursesScreen": {
+    "description": "Courses screen"
+  },
   "adminEditUserScreen": "Editing {user}",
   "@adminEditUserScreen": {
     "description": "Admin user settings screen",
@@ -166,5 +170,57 @@
   "price": "Price",
   "@price": {
     "description": "Price"
+  },
+  "productName": "Name",
+  "@productName": {
+    "description": "Product name"
+  },
+  "productDescription": "Description",
+  "@productDescription": {
+    "description": "Product description"
+  },
+  "productCategory": "Category",
+  "@productCategory": {
+    "description": "Product category"
+  },
+  "productTags": "Tags",
+  "@productTags": {
+    "description": "Product tags"
+  },
+  "productPosition": "Location",
+  "@productPosition": {
+    "description": "Product location"
+  },
+  "productPrice": "Price",
+  "@productPrice": {
+    "description": "Product price"
+  },
+  "productTradePrice": "Wholesale price",
+  "@productTradePrice": {
+    "description": "Product wholesale price"
+  },
+  "productPriceBoard": "Minimum amount for wholesale",
+  "@productPriceBoard": {
+    "description": "Product price board"
+  },
+  "productUnit": "Unit",
+  "@productUnit": {
+    "description": "Product unit"
+  },
+  "productAdded": "Product added",
+  "@productAdded": {
+    "description": "Product added"
+  },
+  "productFailed": "Failed to add product",
+  "@productFailed": {
+    "description": "Product failed"
+  },
+  "addToCart": "Add to cart",
+  "@addToCart": {
+    "description": "Add to cart"
+  },
+  "courses": "Courses",
+  "@courses": {
+    "description": "Courses"
   }
 }

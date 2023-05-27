@@ -1,3 +1,226 @@
 {
-  "@@locale": "ru"
+  "@@locale": "ru",
+  "@@context": "Строки приложения",
+  "placeholder": "Заполнитель",
+  "@placeholder": {
+    "description": "Заполнитель"
+  },
+  "appTitle": "Фермерский проект",
+  "@appTitle": {
+    "description": "Название приложения"
+  },
+  "authScreenSignIn": "Войти",
+  "@authScreenSignIn": {
+    "description": "Auth screen sign in"
+  },
+  "authScreenVerification": "Проверка",
+  "@authScreenVerification": {
+    "description": "Auth screen verification"
+  },
+  "authScreenSignUp": "Зарегистрироваться",
+  "@authScreenSignUp": {
+    "description": "Auth screen sign up"
+  },
+  "coursesScreen": "Курсы",
+  "@coursesScreen": {
+    "description": "Courses screen"
+  },
+  "adminEditUserScreen": "Редактирование {user}",
+  "@adminEditUserScreen": {
+    "description": "Admin user settings screen",
+    "placeholders": {
+      "user": {
+        "type": "String",
+        "description": "Username"
+      }
+    }
+  },
+  "adminUsersScreen": "Пользователи",
+  "@adminUsersScreen": {
+    "description": "Admin users screen"
+  },
+  "userProfileScreen": "Профиль пользователя",
+  "@userProfileScreen": {
+    "description": "User profile screen"
+  },
+  "userSettingsScreen": "Пользовательские настройки",
+  "@userSettingsScreen": {
+    "description": "User settings screen"
+  },
+  "email": "Электронная почта",
+  "@email": {
+    "description": "User E-mail"
+  },
+  "emailCode": "Проверочный код",
+  "@emailCode": {
+    "description": "Email verification code"
+  },
+  "username": "Имя пользователя",
+  "@username": {
+    "description": "User username"
+  },
+  "password": "Пароль",
+  "@password": {
+    "description": "User password"
+  },
+  "fullName": "Полное имя",
+  "@fullName": {
+    "description": "User full name"
+  },
+  "userBio": "Биография пользователя",
+  "@userBio": {
+    "description": "User bio"
+  },
+  "signIn": "Войти",
+  "@signIn": {
+    "description": "Sign in"
+  },
+  "signUp": "Зарегистрироваться",
+  "@signUp": {
+    "description": "Sign up"
+  },
+  "singOut": "Выход",
+  "@singOut": {
+    "description": "Sing out"
+  },
+  "verify": "Проверять",
+  "@verify": {
+    "description": "verify"
+  },
+  "sendCode": "Отправить код",
+  "@sendCode": {
+    "description": "Send code"
+  },
+  "confirm": "Подтверждать",
+  "@confirm": {
+    "description": "Confirm"
+  },
+  "save": "Сохранять",
+  "@save": {
+    "description": "Save"
+  },
+  "formErrorRequired": "Необходимый",
+  "@formErrorRequired": {
+    "description": "Form error required"
+  },
+  "formErrorFullNameRequired": "Укажите полное имя.",
+  "@formErrorFullNameRequired": {
+    "description": "Form error full name is required"
+  },
+  "formErrorEmailRequired": "Электронная почта обязательна",
+  "@formErrorEmailRequired": {
+    "description": "Form error email is required"
+  },
+  "formErrorEmailInvalid": "Неверный адрес электронной почты",
+  "@formErrorEmailInvalid": {
+    "description": "Form error email is invalid"
+  },
+  "formErrorEmailTaken": "Это электронное письмо занято",
+  "@formErrorEmailTaken": {
+    "description": "Form error email taken"
+  },
+  "formErrorPasswordRequired": "Необходим пароль",
+  "@formErrorPasswordRequired": {
+    "description": "Form error password is required"
+  },
+  "formErrorCodeRequired": "Требуется код подтверждения",
+  "@formErrorCodeRequired": {
+    "description": "Form error confirmation code is required"
+  },
+  "formErrorCodeLength": "Код подтверждения слишком короткий",
+  "@formErrorCodeLength": {
+    "description": "Form error confirmation code is too short"
+  },
+  "formErrorInvalidCredentials": "Неверный адрес электронной почты или пароль",
+  "@formErrorInvalidCredentials": {
+    "description": "Form error invalid credentials"
+  },
+  "allProductsScreen": "Все продукты",
+  "@allProductsScreen": {
+    "description": "Products list screen"
+  },
+  "myProductsScreen": "Мои продукты",
+  "@myProductsScreen": {
+    "description": "My products screen"
+  },
+  "createProductScreen": "Создать продукт",
+  "@createProductScreen": {
+    "description": "Create product screen"
+  },
+  "productTagEco": "Эко",
+  "@productTagEco": {
+    "description": "Product tag ECO"
+  },
+  "productTagHalal": "Халяль",
+  "@productTagHalal": {
+    "description": "Product tag Halal"
+  },
+  "productTagPost": "Постное",
+  "@productTagPost": {
+    "description": "Product tag Post"
+  },
+  "productTagUnknown": "Неизвестный",
+  "@productTagUnknown": {
+    "description": "Product tag Unknown"
+  },
+  "wholesalePrice": "Оптовая цена",
+  "@wholesalePrice": {
+    "description": "Wholesale price"
+  },
+  "price": "Цена",
+  "@price": {
+    "description": "Price"
+  },
+  "productName": "Имя",
+  "@productName": {
+    "description": "Product name"
+  },
+  "productDescription": "Описание",
+  "@productDescription": {
+    "description": "Product description"
+  },
+  "productCategory": "Категория",
+  "@productCategory": {
+    "description": "Product category"
+  },
+  "productTags": "Теги",
+  "@productTags": {
+    "description": "Product tags"
+  },
+  "productPosition": "Расположение",
+  "@productPosition": {
+    "description": "Product location"
+  },
+  "productPrice": "Цена",
+  "@productPrice": {
+    "description": "Product price"
+  },
+  "productTradePrice": "Оптовая цена",
+  "@productTradePrice": {
+    "description": "Product wholesale price"
+  },
+  "productPriceBoard": "Минимальная сумма для оптовой продажи",
+  "@productPriceBoard": {
+    "description": "Product price board"
+  },
+  "productUnit": "Единица измерения",
+  "@productUnit": {
+    "description": "Product unit"
+  },
+  "productAdded": "Товар добавлен",
+  "@productAdded": {
+    "description": "Product added"
+  },
+  "productFailed": "Не удалось добавить товар",
+  "@productFailed": {
+    "description": "Product failed"
+  },
+  "addToCart": "Добавить в корзину",
+  "@addToCart": {
+    "description": "Add to cart"
+  },
+  "courses": "Courses",
+  "@courses": {
+    "description": "Courses"
+  }
 }

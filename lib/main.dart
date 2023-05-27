@@ -34,17 +34,20 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ProviderScope(
     parent: globalContainer,
-    child: MaterialApp.router(
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: const Locale('ru'),
-      scrollBehavior: AppScrollBehavior(),
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.teal,
-        typography: Typography.material2021(),
+    child: Consumer(
+      builder: (context, ref, child) => MaterialApp.router(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: ref.watch(appConfigNotifierProvider).locale,
+        scrollBehavior: AppScrollBehavior(),
+        theme: ThemeData(
+          brightness: ref.watch(appConfigNotifierProvider).brightness,
+          useMaterial3: true,
+          colorSchemeSeed: Colors.teal,
+          typography: Typography.material2021(),
+        ),
+        routerConfig: _appRouter.config(),
       ),
-      routerConfig: _appRouter.config(),
     ),
   );
 }

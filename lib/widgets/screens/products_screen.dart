@@ -39,7 +39,7 @@ class ProductsScreenState extends State<ProductsScreen> {
             AllProductsSubRoute(),
             MyProductsSubRoute(),
             CreateProductSubRoute(),
-            // AuthSignUpSubRoute(),
+            CartProductsSubRoute(),
           ],
           builder: (context, child) {
             final tabsRouter = AutoTabsRouter.of(context);
@@ -93,8 +93,7 @@ class ProductsScreenState extends State<ProductsScreen> {
                           label: context.localizations.myProductsScreen,
                           onTap: () {
                             if (tabsRouter.activeIndex == 1)
-                              // ignore: unused_result
-                              ref.refresh(myProductsListProvider);
+                              ref.invalidate(myProductsListProvider);
                             else
                               tabsRouter.setActiveIndex(1);
                           },
@@ -110,14 +109,16 @@ class ProductsScreenState extends State<ProductsScreen> {
                             // else
                           },
                         ),
-                        // SidebarXItem(
-                        //   icon: Icons.logout,
-                        //   label: context.localizations.singOut,
-                        //   onTap: () {
-                        //     remainTab();
-                        //     ref.read(authenticationProvider.notifier).signOut();
-                        //   },
-                        // )
+                        SidebarXItem(
+                          icon: Icons.shopping_basket_outlined,
+                          label: context.localizations.singOut,
+                          onTap: () {
+                            if (tabsRouter.activeIndex == 3)
+                              ref.invalidate(cartProductsListProvider);
+                            else
+                              tabsRouter.setActiveIndex(3);
+                          },
+                        )
                       ],
                     );
                   },

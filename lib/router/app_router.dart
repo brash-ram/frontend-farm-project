@@ -53,8 +53,15 @@ class AppRouter extends _$AppRouter {
       ],
     ),
     AutoRoute(
+      page: CoursesRoute.page,
+      path: '/courses',
+    ),
+    AutoRoute(
       page: ProductsRoute.page,
       path: '/products',
+      guards: const [
+        AuthGuard(),
+      ],
       children: [
         AutoRoute(
           initial: true,
@@ -64,16 +71,14 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: MyProductsSubRoute.page,
           path: 'my',
-          guards: const [
-            AuthGuard(),
-          ],
         ),
         AutoRoute(
           page: CreateProductSubRoute.page,
           path: 'create',
-          guards: const [
-            AuthGuard(),
-          ],
+        ),
+        AutoRoute(
+          page: CartProductsSubRoute.page,
+          path: 'cart',
         ),
       ],
     ),

@@ -2,6 +2,7 @@ export 'extensions/async_value_render.dart';
 export 'extensions/build_content_localizations.dart';
 export 'extensions/build_content_theme_data.dart';
 export 'extensions/date_time_format.dart';
+export 'extensions/date_time_unix_timestamp.dart';
 export 'extensions/fallbacks/date_time_fallback.dart';
 export 'extensions/fallbacks/list_fallback.dart';
 export 'extensions/fallbacks/num_fallback.dart';

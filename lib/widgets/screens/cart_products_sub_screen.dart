@@ -7,8 +7,8 @@ import '../product_card.dart';
 
 
 @RoutePage()
-class AllProductsSubScreen extends StatelessWidget {
-  const AllProductsSubScreen({ super.key, });
+class CartProductsSubScreen extends StatelessWidget {
+  const CartProductsSubScreen({ super.key, });
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -18,7 +18,7 @@ class AllProductsSubScreen extends StatelessWidget {
     ),
     backgroundColor: Colors.transparent,
     body: Consumer(
-      builder: (context, ref, child) => ref.watch(allProductsListProvider).render(
+      builder: (context, ref, child) => ref.watch(cartProductsListProvider).render(
         skipLoadingOnRefresh: false,
         (data) => ListView(
           children: [

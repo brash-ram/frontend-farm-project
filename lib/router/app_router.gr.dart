@@ -39,6 +39,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AuthSignUpSubScreen(),
       );
     },
+    CartProductsSubRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CartProductsSubScreen(),
+      );
+    },
+    CoursesRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CoursesScreen(),
+      );
+    },
     CreateProductSubRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -130,6 +142,34 @@ class AuthSignUpSubRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AuthSignUpSubRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CartProductsSubScreen]
+class CartProductsSubRoute extends PageRouteInfo<void> {
+  const CartProductsSubRoute({List<PageRouteInfo>? children})
+      : super(
+          CartProductsSubRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CartProductsSubRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CoursesScreen]
+class CoursesRoute extends PageRouteInfo<void> {
+  const CoursesRoute({List<PageRouteInfo>? children})
+      : super(
+          CoursesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CoursesRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

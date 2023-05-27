@@ -41,52 +41,20 @@ abstract class Api extends ChopperService {
   }
 
   ///
-  Future<chopper.Response<Template>> apiTemplateUpdatePut(
+  Future<chopper.Response<Template>> apiTemplateUpdatePost(
       {required TemplateRequest? body}) {
     generatedMapping.putIfAbsent(Template, () => Template.fromJsonFactory);
 
-    return _apiTemplateUpdatePut(body: body);
+    return _apiTemplateUpdatePost(body: body);
   }
 
   ///
-  @Put(
+  @Post(
     path: '/api/template/update',
     optionalBody: true,
   )
-  Future<chopper.Response<Template>> _apiTemplateUpdatePut(
+  Future<chopper.Response<Template>> _apiTemplateUpdatePost(
       {@Body() required TemplateRequest? body});
-
-  ///
-  Future<chopper.Response<Delivery>> apiDeliveryUpdatePut(
-      {required AddDeliveryRequest? body}) {
-    generatedMapping.putIfAbsent(Delivery, () => Delivery.fromJsonFactory);
-
-    return _apiDeliveryUpdatePut(body: body);
-  }
-
-  ///
-  @Put(
-    path: '/api/delivery/update',
-    optionalBody: true,
-  )
-  Future<chopper.Response<Delivery>> _apiDeliveryUpdatePut(
-      {@Body() required AddDeliveryRequest? body});
-
-  ///
-  Future<chopper.Response<UserInfo>> apiAuthChangePasswordPut(
-      {required ChangePasswordRequest? body}) {
-    generatedMapping.putIfAbsent(UserInfo, () => UserInfo.fromJsonFactory);
-
-    return _apiAuthChangePasswordPut(body: body);
-  }
-
-  ///
-  @Put(
-    path: '/api/auth/change/password',
-    optionalBody: true,
-  )
-  Future<chopper.Response<UserInfo>> _apiAuthChangePasswordPut(
-      {@Body() required ChangePasswordRequest? body});
 
   ///
   ///@param id
@@ -155,21 +123,6 @@ abstract class Api extends ChopperService {
   Future<chopper.Response<List<Product>>> _apiProductMyPost();
 
   ///
-  ///@param id
-  Future<chopper.Response> apiProductDeletePost({required int? id}) {
-    return _apiProductDeletePost(id: id);
-  }
-
-  ///
-  ///@param id
-  @Post(
-    path: '/api/product/delete',
-    optionalBody: true,
-  )
-  Future<chopper.Response> _apiProductDeletePost(
-      {@Query('id') required int? id});
-
-  ///
   Future<chopper.Response<Product>> apiProductAddPost(
       {required AddProductRequest? body}) {
     generatedMapping.putIfAbsent(Product, () => Product.fromJsonFactory);
@@ -186,21 +139,76 @@ abstract class Api extends ChopperService {
       {@Body() required AddProductRequest? body});
 
   ///
-  ///@param id
-  Future<chopper.Response<Delivery>> apiDeliveryDeletePost({required int? id}) {
-    generatedMapping.putIfAbsent(Delivery, () => Delivery.fromJsonFactory);
+  Future<chopper.Response<Product>> apiProductAddDiscountPost(
+      {required AddDiscountRequest? body}) {
+    generatedMapping.putIfAbsent(Product, () => Product.fromJsonFactory);
 
-    return _apiDeliveryDeletePost(id: id);
+    return _apiProductAddDiscountPost(body: body);
   }
 
   ///
-  ///@param id
   @Post(
-    path: '/api/delivery/delete',
+    path: '/api/product/add/discount',
     optionalBody: true,
   )
-  Future<chopper.Response<Delivery>> _apiDeliveryDeletePost(
-      {@Query('id') required int? id});
+  Future<chopper.Response<Product>> _apiProductAddDiscountPost(
+      {@Body() required AddDiscountRequest? body});
+
+  ///
+  Future<chopper.Response> apiMarksChangeMarksDeletePost(
+      {required Mark? body}) {
+    return _apiMarksChangeMarksDeletePost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/marks/change/marks/delete',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _apiMarksChangeMarksDeletePost(
+      {@Body() required Mark? body});
+
+  ///
+  Future<chopper.Response> apiMarksChangeMarksChangePost(
+      {required Mark? body}) {
+    return _apiMarksChangeMarksChangePost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/marks/change/marks/change',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _apiMarksChangeMarksChangePost(
+      {@Body() required Mark? body});
+
+  ///
+  Future<chopper.Response> apiMarksAddPost({required Mark? body}) {
+    return _apiMarksAddPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/marks/add',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _apiMarksAddPost({@Body() required Mark? body});
+
+  ///
+  Future<chopper.Response<Delivery>> apiDeliveryUpdatePost(
+      {required UpdateDeliveryRequest? body}) {
+    generatedMapping.putIfAbsent(Delivery, () => Delivery.fromJsonFactory);
+
+    return _apiDeliveryUpdatePost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/delivery/update',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Delivery>> _apiDeliveryUpdatePost(
+      {@Body() required UpdateDeliveryRequest? body});
 
   ///
   Future<chopper.Response<Delivery>> apiDeliveryAddPost(
@@ -217,6 +225,100 @@ abstract class Api extends ChopperService {
   )
   Future<chopper.Response<Delivery>> _apiDeliveryAddPost(
       {@Body() required AddDeliveryRequest? body});
+
+  ///
+  Future<chopper.Response<List<Delivery>>> apiDeliveryAddAllPost(
+      {required List<AddDeliveryRequest>? body}) {
+    generatedMapping.putIfAbsent(Delivery, () => Delivery.fromJsonFactory);
+
+    return _apiDeliveryAddAllPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/delivery/addAll',
+    optionalBody: true,
+  )
+  Future<chopper.Response<List<Delivery>>> _apiDeliveryAddAllPost(
+      {@Body() required List<AddDeliveryRequest>? body});
+
+  ///
+  Future<chopper.Response<Course>> apiCourseUpdateCoursePost(
+      {required UpdateCourseRequest? body}) {
+    generatedMapping.putIfAbsent(Course, () => Course.fromJsonFactory);
+
+    return _apiCourseUpdateCoursePost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/course/updateCourse',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Course>> _apiCourseUpdateCoursePost(
+      {@Body() required UpdateCourseRequest? body});
+
+  ///
+  Future<chopper.Response<Course>> apiCourseAddCoursePost(
+      {required AddCourseRequest? body}) {
+    generatedMapping.putIfAbsent(Course, () => Course.fromJsonFactory);
+
+    return _apiCourseAddCoursePost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/course/addCourse',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Course>> _apiCourseAddCoursePost(
+      {@Body() required AddCourseRequest? body});
+
+  ///
+  ///@param userId
+  ///@param productId
+  Future<chopper.Response> apiCartDeleteProductPost({
+    required int? userId,
+    required int? productId,
+  }) {
+    return _apiCartDeleteProductPost(userId: userId, productId: productId);
+  }
+
+  ///
+  ///@param userId
+  ///@param productId
+  @Post(
+    path: '/api/cart/deleteProduct',
+    optionalBody: true,
+  )
+  Future<chopper.Response> _apiCartDeleteProductPost({
+    @Query('userId') required int? userId,
+    @Query('productId') required int? productId,
+  });
+
+  ///
+  ///@param userId
+  ///@param productId
+  Future<chopper.Response<Cart>> apiCartAddPost({
+    required int? userId,
+    required int? productId,
+  }) {
+    generatedMapping.putIfAbsent(Cart, () => Cart.fromJsonFactory);
+
+    return _apiCartAddPost(userId: userId, productId: productId);
+  }
+
+  ///
+  ///@param userId
+  ///@param productId
+  @Post(
+    path: '/api/cart/add',
+    optionalBody: true,
+  )
+  Future<chopper.Response<Cart>> _apiCartAddPost({
+    @Query('userId') required int? userId,
+    @Query('productId') required int? productId,
+  });
 
   ///
   Future<chopper.Response<UserInfo>> apiAuthSignUpPost(
@@ -316,20 +418,122 @@ abstract class Api extends ChopperService {
 
   ///
   ///@param id
-  Future<chopper.Response<UserInfo>> apiAuthByIdPost({required int? id}) {
+  Future<chopper.Response<UserInfo>> apiAuthChangeRoleByIdPost(
+      {required int? id}) {
     generatedMapping.putIfAbsent(UserInfo, () => UserInfo.fromJsonFactory);
 
-    return _apiAuthByIdPost(id: id);
+    return _apiAuthChangeRoleByIdPost(id: id);
   }
 
   ///
   ///@param id
   @Post(
-    path: '/api/auth/byId',
+    path: '/api/auth/change/role/byId',
     optionalBody: true,
   )
-  Future<chopper.Response<UserInfo>> _apiAuthByIdPost(
+  Future<chopper.Response<UserInfo>> _apiAuthChangeRoleByIdPost(
       {@Query('id') required int? id});
+
+  ///
+  Future<chopper.Response<UserInfo>> apiAuthChangePasswordPost(
+      {required ChangePasswordRequest? body}) {
+    generatedMapping.putIfAbsent(UserInfo, () => UserInfo.fromJsonFactory);
+
+    return _apiAuthChangePasswordPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/auth/change/password',
+    optionalBody: true,
+  )
+  Future<chopper.Response<UserInfo>> _apiAuthChangePasswordPost(
+      {@Body() required ChangePasswordRequest? body});
+
+  ///
+  Future<chopper.Response<List<UserInfo>>> apiAuthAddAllPost(
+      {required List<SignUpCustomRequest>? body}) {
+    generatedMapping.putIfAbsent(UserInfo, () => UserInfo.fromJsonFactory);
+
+    return _apiAuthAddAllPost(body: body);
+  }
+
+  ///
+  @Post(
+    path: '/api/auth/addAll',
+    optionalBody: true,
+  )
+  Future<chopper.Response<List<UserInfo>>> _apiAuthAddAllPost(
+      {@Body() required List<SignUpCustomRequest>? body});
+
+  ///
+  ///@param name
+  Future<chopper.Response<List<Product>>> apiProductSearchNameGet(
+      {required String? name}) {
+    generatedMapping.putIfAbsent(Product, () => Product.fromJsonFactory);
+
+    return _apiProductSearchNameGet(name: name);
+  }
+
+  ///
+  ///@param name
+  @Get(path: '/api/product/search/name')
+  Future<chopper.Response<List<Product>>> _apiProductSearchNameGet(
+      {@Query('name') required String? name});
+
+  ///
+  ///@param location
+  Future<chopper.Response<List<Product>>> apiProductSearchLocationGet(
+      {required String? location}) {
+    generatedMapping.putIfAbsent(Product, () => Product.fromJsonFactory);
+
+    return _apiProductSearchLocationGet(location: location);
+  }
+
+  ///
+  ///@param location
+  @Get(path: '/api/product/search/location')
+  Future<chopper.Response<List<Product>>> _apiProductSearchLocationGet(
+      {@Query('location') required String? location});
+
+  ///
+  ///@param category
+  Future<chopper.Response<List<Product>>> apiProductSearchCategoryGet(
+      {required String? category}) {
+    generatedMapping.putIfAbsent(Product, () => Product.fromJsonFactory);
+
+    return _apiProductSearchCategoryGet(category: category);
+  }
+
+  ///
+  ///@param category
+  @Get(path: '/api/product/search/category')
+  Future<chopper.Response<List<Product>>> _apiProductSearchCategoryGet(
+      {@Query('category') required String? category});
+
+  ///
+  ///@param id
+  Future<chopper.Response<Product>> apiProductGetProductGet(
+      {required int? id}) {
+    generatedMapping.putIfAbsent(Product, () => Product.fromJsonFactory);
+
+    return _apiProductGetProductGet(id: id);
+  }
+
+  ///
+  ///@param id
+  @Get(path: '/api/product/getProduct')
+  Future<chopper.Response<Product>> _apiProductGetProductGet(
+      {@Query('id') required int? id});
+
+  ///
+  Future<chopper.Response<List<String>>> apiProductApiProductCategoriesGet() {
+    return _apiProductApiProductCategoriesGet();
+  }
+
+  ///
+  @Get(path: '/api/product/api/product/categories')
+  Future<chopper.Response<List<String>>> _apiProductApiProductCategoriesGet();
 
   ///
   Future<chopper.Response<List<Product>>> apiProductAllGet() {
@@ -343,15 +547,111 @@ abstract class Api extends ChopperService {
   Future<chopper.Response<List<Product>>> _apiProductAllGet();
 
   ///
-  Future<chopper.Response<List<Product>>> apiCartMyGet() {
-    generatedMapping.putIfAbsent(Product, () => Product.fromJsonFactory);
+  ///@param position
+  Future<chopper.Response<List<Delivery>>> apiDeliverySearchPositionGet(
+      {required String? position}) {
+    generatedMapping.putIfAbsent(Delivery, () => Delivery.fromJsonFactory);
+
+    return _apiDeliverySearchPositionGet(position: position);
+  }
+
+  ///
+  ///@param position
+  @Get(path: '/api/delivery/search/position')
+  Future<chopper.Response<List<Delivery>>> _apiDeliverySearchPositionGet(
+      {@Query('position') required String? position});
+
+  ///
+  ///@param id
+  Future<chopper.Response<Delivery>> apiDeliveryGetByIdGet({required int? id}) {
+    generatedMapping.putIfAbsent(Delivery, () => Delivery.fromJsonFactory);
+
+    return _apiDeliveryGetByIdGet(id: id);
+  }
+
+  ///
+  ///@param id
+  @Get(path: '/api/delivery/getById')
+  Future<chopper.Response<Delivery>> _apiDeliveryGetByIdGet(
+      {@Query('id') required int? id});
+
+  ///
+  ///@param id
+  Future<chopper.Response<Object>> apiDeliveryCalenderGet({required int? id}) {
+    return _apiDeliveryCalenderGet(id: id);
+  }
+
+  ///
+  ///@param id
+  @Get(path: '/api/delivery/calender')
+  Future<chopper.Response<Object>> _apiDeliveryCalenderGet(
+      {@Query('id') required int? id});
+
+  ///
+  Future<chopper.Response<List<Delivery>>> apiDeliveryAllGet() {
+    generatedMapping.putIfAbsent(Delivery, () => Delivery.fromJsonFactory);
+
+    return _apiDeliveryAllGet();
+  }
+
+  ///
+  @Get(path: '/api/delivery/all')
+  Future<chopper.Response<List<Delivery>>> _apiDeliveryAllGet();
+
+  ///
+  ///@param id
+  Future<chopper.Response<Course>> apiCourseGeCourseGet({required int? id}) {
+    generatedMapping.putIfAbsent(Course, () => Course.fromJsonFactory);
+
+    return _apiCourseGeCourseGet(id: id);
+  }
+
+  ///
+  ///@param id
+  @Get(path: '/api/course/geCourse')
+  Future<chopper.Response<Course>> _apiCourseGeCourseGet(
+      {@Query('id') required int? id});
+
+  ///
+  Future<chopper.Response<List<Course>>> apiCourseAllCoursersGet() {
+    generatedMapping.putIfAbsent(Course, () => Course.fromJsonFactory);
+
+    return _apiCourseAllCoursersGet();
+  }
+
+  ///
+  @Get(path: '/api/course/allCoursers')
+  Future<chopper.Response<List<Course>>> _apiCourseAllCoursersGet();
+
+  ///
+  ///@param userId
+  ///@param productId
+  Future<chopper.Response<bool>> apiCartProductExistGet({
+    required int? userId,
+    required int? productId,
+  }) {
+    return _apiCartProductExistGet(userId: userId, productId: productId);
+  }
+
+  ///
+  ///@param userId
+  ///@param productId
+  @Get(path: '/api/cart/productExist')
+  Future<chopper.Response<bool>> _apiCartProductExistGet({
+    @Query('userId') required int? userId,
+    @Query('productId') required int? productId,
+  });
+
+  ///
+  Future<chopper.Response<Cart>> apiCartMyGet() {
+    generatedMapping.putIfAbsent(Cart, () => Cart.fromJsonFactory);
 
     return _apiCartMyGet();
   }
 
   ///
   @Get(path: '/api/cart/my')
-  Future<chopper.Response<List<Product>>> _apiCartMyGet();
+  Future<chopper.Response<Cart>> _apiCartMyGet();
 
   ///
   Future<chopper.Response<UserInfo>> apiAuthSelfGet() {
@@ -365,6 +665,20 @@ abstract class Api extends ChopperService {
   Future<chopper.Response<UserInfo>> _apiAuthSelfGet();
 
   ///
+  ///@param id
+  Future<chopper.Response<UserInfo>> apiAuthByIdGet({required int? id}) {
+    generatedMapping.putIfAbsent(UserInfo, () => UserInfo.fromJsonFactory);
+
+    return _apiAuthByIdGet(id: id);
+  }
+
+  ///
+  ///@param id
+  @Get(path: '/api/auth/byId')
+  Future<chopper.Response<UserInfo>> _apiAuthByIdGet(
+      {@Query('id') required int? id});
+
+  ///
   Future<chopper.Response<UserInfoListResponse>> apiAuthAllGet() {
     generatedMapping.putIfAbsent(
         UserInfoListResponse, () => UserInfoListResponse.fromJsonFactory);
@@ -375,6 +689,45 @@ abstract class Api extends ChopperService {
   ///
   @Get(path: '/api/auth/all')
   Future<chopper.Response<UserInfoListResponse>> _apiAuthAllGet();
+
+  ///
+  ///@param id
+  Future<chopper.Response> apiProductDeleteDelete({required int? id}) {
+    return _apiProductDeleteDelete(id: id);
+  }
+
+  ///
+  ///@param id
+  @Delete(path: '/api/product/delete')
+  Future<chopper.Response> _apiProductDeleteDelete(
+      {@Query('id') required int? id});
+
+  ///
+  ///@param id
+  Future<chopper.Response<Delivery>> apiDeliveryDeleteDelete(
+      {required int? id}) {
+    generatedMapping.putIfAbsent(Delivery, () => Delivery.fromJsonFactory);
+
+    return _apiDeliveryDeleteDelete(id: id);
+  }
+
+  ///
+  ///@param id
+  @Delete(path: '/api/delivery/delete')
+  Future<chopper.Response<Delivery>> _apiDeliveryDeleteDelete(
+      {@Query('id') required int? id});
+
+  ///
+  ///@param id
+  Future<chopper.Response> apiCourseDeleteCourseDelete({required int? id}) {
+    return _apiCourseDeleteCourseDelete(id: id);
+  }
+
+  ///
+  ///@param id
+  @Delete(path: '/api/course/deleteCourse')
+  Future<chopper.Response> _apiCourseDeleteCourseDelete(
+      {@Query('id') required int? id});
 
   ///
   ///@param userId
@@ -451,455 +804,6 @@ extension $TemplateExtension on Template {
 }
 
 @JsonSerializable(explicitToJson: true)
-class AddDeliveryRequest {
-  AddDeliveryRequest({
-    required this.id,
-    required this.deliveryType,
-    required this.date,
-    required this.adressFrom,
-    required this.adressTo,
-    required this.period,
-    required this.productId,
-    required this.farmerId,
-    required this.consumerId,
-  });
-
-  factory AddDeliveryRequest.fromJson(Map<String, dynamic> json) =>
-      _$AddDeliveryRequestFromJson(json);
-
-  static const toJsonFactory = _$AddDeliveryRequestToJson;
-  Map<String, dynamic> toJson() => _$AddDeliveryRequestToJson(this);
-
-  @JsonKey(name: 'id')
-  final int id;
-  @JsonKey(
-    name: 'deliveryType',
-    toJson: addDeliveryRequestDeliveryTypeToJson,
-    fromJson: addDeliveryRequestDeliveryTypeFromJson,
-  )
-  final enums.AddDeliveryRequestDeliveryType deliveryType;
-  @JsonKey(name: 'date')
-  final int date;
-  @JsonKey(name: 'adressFrom')
-  final String adressFrom;
-  @JsonKey(name: 'adressTo')
-  final String adressTo;
-  @JsonKey(name: 'period')
-  final int period;
-  @JsonKey(name: 'productId')
-  final int productId;
-  @JsonKey(name: 'farmerId')
-  final int farmerId;
-  @JsonKey(name: 'consumerId')
-  final int consumerId;
-  static const fromJsonFactory = _$AddDeliveryRequestFromJson;
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is AddDeliveryRequest &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.deliveryType, deliveryType) ||
-                const DeepCollectionEquality()
-                    .equals(other.deliveryType, deliveryType)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.adressFrom, adressFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.adressFrom, adressFrom)) &&
-            (identical(other.adressTo, adressTo) ||
-                const DeepCollectionEquality()
-                    .equals(other.adressTo, adressTo)) &&
-            (identical(other.period, period) ||
-                const DeepCollectionEquality().equals(other.period, period)) &&
-            (identical(other.productId, productId) ||
-                const DeepCollectionEquality()
-                    .equals(other.productId, productId)) &&
-            (identical(other.farmerId, farmerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.farmerId, farmerId)) &&
-            (identical(other.consumerId, consumerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.consumerId, consumerId)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(deliveryType) ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(adressFrom) ^
-      const DeepCollectionEquality().hash(adressTo) ^
-      const DeepCollectionEquality().hash(period) ^
-      const DeepCollectionEquality().hash(productId) ^
-      const DeepCollectionEquality().hash(farmerId) ^
-      const DeepCollectionEquality().hash(consumerId) ^
-      runtimeType.hashCode;
-}
-
-extension $AddDeliveryRequestExtension on AddDeliveryRequest {
-  AddDeliveryRequest copyWith(
-      {int? id,
-      enums.AddDeliveryRequestDeliveryType? deliveryType,
-      int? date,
-      String? adressFrom,
-      String? adressTo,
-      int? period,
-      int? productId,
-      int? farmerId,
-      int? consumerId}) {
-    return AddDeliveryRequest(
-        id: id ?? this.id,
-        deliveryType: deliveryType ?? this.deliveryType,
-        date: date ?? this.date,
-        adressFrom: adressFrom ?? this.adressFrom,
-        adressTo: adressTo ?? this.adressTo,
-        period: period ?? this.period,
-        productId: productId ?? this.productId,
-        farmerId: farmerId ?? this.farmerId,
-        consumerId: consumerId ?? this.consumerId);
-  }
-
-  AddDeliveryRequest copyWithWrapped(
-      {Wrapped<int>? id,
-      Wrapped<enums.AddDeliveryRequestDeliveryType>? deliveryType,
-      Wrapped<int>? date,
-      Wrapped<String>? adressFrom,
-      Wrapped<String>? adressTo,
-      Wrapped<int>? period,
-      Wrapped<int>? productId,
-      Wrapped<int>? farmerId,
-      Wrapped<int>? consumerId}) {
-    return AddDeliveryRequest(
-        id: (id != null ? id.value : this.id),
-        deliveryType:
-            (deliveryType != null ? deliveryType.value : this.deliveryType),
-        date: (date != null ? date.value : this.date),
-        adressFrom: (adressFrom != null ? adressFrom.value : this.adressFrom),
-        adressTo: (adressTo != null ? adressTo.value : this.adressTo),
-        period: (period != null ? period.value : this.period),
-        productId: (productId != null ? productId.value : this.productId),
-        farmerId: (farmerId != null ? farmerId.value : this.farmerId),
-        consumerId: (consumerId != null ? consumerId.value : this.consumerId));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class Delivery {
-  Delivery({
-    required this.id,
-    required this.deliveryType,
-    required this.date,
-    required this.adressFrom,
-    required this.adressTo,
-    required this.period,
-    required this.productId,
-    required this.consumerId,
-    required this.farmerId,
-    required this.unit,
-  });
-
-  factory Delivery.fromJson(Map<String, dynamic> json) =>
-      _$DeliveryFromJson(json);
-
-  static const toJsonFactory = _$DeliveryToJson;
-  Map<String, dynamic> toJson() => _$DeliveryToJson(this);
-
-  @JsonKey(name: 'id')
-  final int id;
-  @JsonKey(
-    name: 'deliveryType',
-    toJson: deliveryDeliveryTypeToJson,
-    fromJson: deliveryDeliveryTypeFromJson,
-  )
-  final enums.DeliveryDeliveryType deliveryType;
-  @JsonKey(name: 'date')
-  final int date;
-  @JsonKey(name: 'adressFrom')
-  final String adressFrom;
-  @JsonKey(name: 'adressTo')
-  final String adressTo;
-  @JsonKey(name: 'period')
-  final int period;
-  @JsonKey(name: 'productId')
-  final int productId;
-  @JsonKey(name: 'consumerId')
-  final int consumerId;
-  @JsonKey(name: 'farmerId')
-  final int farmerId;
-  @JsonKey(
-    name: 'unit',
-    toJson: deliveryUnitToJson,
-    fromJson: deliveryUnitFromJson,
-  )
-  final enums.DeliveryUnit unit;
-  static const fromJsonFactory = _$DeliveryFromJson;
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Delivery &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.deliveryType, deliveryType) ||
-                const DeepCollectionEquality()
-                    .equals(other.deliveryType, deliveryType)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.adressFrom, adressFrom) ||
-                const DeepCollectionEquality()
-                    .equals(other.adressFrom, adressFrom)) &&
-            (identical(other.adressTo, adressTo) ||
-                const DeepCollectionEquality()
-                    .equals(other.adressTo, adressTo)) &&
-            (identical(other.period, period) ||
-                const DeepCollectionEquality().equals(other.period, period)) &&
-            (identical(other.productId, productId) ||
-                const DeepCollectionEquality()
-                    .equals(other.productId, productId)) &&
-            (identical(other.consumerId, consumerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.consumerId, consumerId)) &&
-            (identical(other.farmerId, farmerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.farmerId, farmerId)) &&
-            (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(deliveryType) ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(adressFrom) ^
-      const DeepCollectionEquality().hash(adressTo) ^
-      const DeepCollectionEquality().hash(period) ^
-      const DeepCollectionEquality().hash(productId) ^
-      const DeepCollectionEquality().hash(consumerId) ^
-      const DeepCollectionEquality().hash(farmerId) ^
-      const DeepCollectionEquality().hash(unit) ^
-      runtimeType.hashCode;
-}
-
-extension $DeliveryExtension on Delivery {
-  Delivery copyWith(
-      {int? id,
-      enums.DeliveryDeliveryType? deliveryType,
-      int? date,
-      String? adressFrom,
-      String? adressTo,
-      int? period,
-      int? productId,
-      int? consumerId,
-      int? farmerId,
-      enums.DeliveryUnit? unit}) {
-    return Delivery(
-        id: id ?? this.id,
-        deliveryType: deliveryType ?? this.deliveryType,
-        date: date ?? this.date,
-        adressFrom: adressFrom ?? this.adressFrom,
-        adressTo: adressTo ?? this.adressTo,
-        period: period ?? this.period,
-        productId: productId ?? this.productId,
-        consumerId: consumerId ?? this.consumerId,
-        farmerId: farmerId ?? this.farmerId,
-        unit: unit ?? this.unit);
-  }
-
-  Delivery copyWithWrapped(
-      {Wrapped<int>? id,
-      Wrapped<enums.DeliveryDeliveryType>? deliveryType,
-      Wrapped<int>? date,
-      Wrapped<String>? adressFrom,
-      Wrapped<String>? adressTo,
-      Wrapped<int>? period,
-      Wrapped<int>? productId,
-      Wrapped<int>? consumerId,
-      Wrapped<int>? farmerId,
-      Wrapped<enums.DeliveryUnit>? unit}) {
-    return Delivery(
-        id: (id != null ? id.value : this.id),
-        deliveryType:
-            (deliveryType != null ? deliveryType.value : this.deliveryType),
-        date: (date != null ? date.value : this.date),
-        adressFrom: (adressFrom != null ? adressFrom.value : this.adressFrom),
-        adressTo: (adressTo != null ? adressTo.value : this.adressTo),
-        period: (period != null ? period.value : this.period),
-        productId: (productId != null ? productId.value : this.productId),
-        consumerId: (consumerId != null ? consumerId.value : this.consumerId),
-        farmerId: (farmerId != null ? farmerId.value : this.farmerId),
-        unit: (unit != null ? unit.value : this.unit));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class ChangePasswordRequest {
-  ChangePasswordRequest({
-    required this.id,
-    required this.password,
-  });
-
-  factory ChangePasswordRequest.fromJson(Map<String, dynamic> json) =>
-      _$ChangePasswordRequestFromJson(json);
-
-  static const toJsonFactory = _$ChangePasswordRequestToJson;
-  Map<String, dynamic> toJson() => _$ChangePasswordRequestToJson(this);
-
-  @JsonKey(name: 'id')
-  final int id;
-  @JsonKey(name: 'password')
-  final String password;
-  static const fromJsonFactory = _$ChangePasswordRequestFromJson;
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is ChangePasswordRequest &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(password) ^
-      runtimeType.hashCode;
-}
-
-extension $ChangePasswordRequestExtension on ChangePasswordRequest {
-  ChangePasswordRequest copyWith({int? id, String? password}) {
-    return ChangePasswordRequest(
-        id: id ?? this.id, password: password ?? this.password);
-  }
-
-  ChangePasswordRequest copyWithWrapped(
-      {Wrapped<int>? id, Wrapped<String>? password}) {
-    return ChangePasswordRequest(
-        id: (id != null ? id.value : this.id),
-        password: (password != null ? password.value : this.password));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class UserInfo {
-  UserInfo({
-    required this.fullName,
-    required this.bio,
-    required this.email,
-    required this.id,
-    required this.roles,
-    required this.dateRegistration,
-  });
-
-  factory UserInfo.fromJson(Map<String, dynamic> json) =>
-      _$UserInfoFromJson(json);
-
-  static const toJsonFactory = _$UserInfoToJson;
-  Map<String, dynamic> toJson() => _$UserInfoToJson(this);
-
-  @JsonKey(name: 'fullName')
-  final String fullName;
-  @JsonKey(name: 'bio')
-  final String bio;
-  @JsonKey(name: 'email')
-  final String email;
-  @JsonKey(name: 'id')
-  final int id;
-  @JsonKey(
-    name: 'roles',
-    toJson: userInfoRolesListToJson,
-    fromJson: userInfoRolesListFromJson,
-  )
-  final List<enums.UserInfoRoles> roles;
-  @JsonKey(name: 'dateRegistration')
-  final int dateRegistration;
-  static const fromJsonFactory = _$UserInfoFromJson;
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is UserInfo &&
-            (identical(other.fullName, fullName) ||
-                const DeepCollectionEquality()
-                    .equals(other.fullName, fullName)) &&
-            (identical(other.bio, bio) ||
-                const DeepCollectionEquality().equals(other.bio, bio)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.roles, roles) ||
-                const DeepCollectionEquality().equals(other.roles, roles)) &&
-            (identical(other.dateRegistration, dateRegistration) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateRegistration, dateRegistration)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(fullName) ^
-      const DeepCollectionEquality().hash(bio) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(roles) ^
-      const DeepCollectionEquality().hash(dateRegistration) ^
-      runtimeType.hashCode;
-}
-
-extension $UserInfoExtension on UserInfo {
-  UserInfo copyWith(
-      {String? fullName,
-      String? bio,
-      String? email,
-      int? id,
-      List<enums.UserInfoRoles>? roles,
-      int? dateRegistration}) {
-    return UserInfo(
-        fullName: fullName ?? this.fullName,
-        bio: bio ?? this.bio,
-        email: email ?? this.email,
-        id: id ?? this.id,
-        roles: roles ?? this.roles,
-        dateRegistration: dateRegistration ?? this.dateRegistration);
-  }
-
-  UserInfo copyWithWrapped(
-      {Wrapped<String>? fullName,
-      Wrapped<String>? bio,
-      Wrapped<String>? email,
-      Wrapped<int>? id,
-      Wrapped<List<enums.UserInfoRoles>>? roles,
-      Wrapped<int>? dateRegistration}) {
-    return UserInfo(
-        fullName: (fullName != null ? fullName.value : this.fullName),
-        bio: (bio != null ? bio.value : this.bio),
-        email: (email != null ? email.value : this.email),
-        id: (id != null ? id.value : this.id),
-        roles: (roles != null ? roles.value : this.roles),
-        dateRegistration: (dateRegistration != null
-            ? dateRegistration.value
-            : this.dateRegistration));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
 class TemplateResponse {
   TemplateResponse();
 
@@ -931,8 +835,11 @@ class UpdateProductRequest {
     required this.tradePrice,
     required this.priceBoard,
     required this.farmerId,
-    required this.dateRegistration,
     required this.unit,
+    required this.startSales,
+    required this.endSales,
+    required this.deliveryTypes,
+    required this.discount,
     required this.idProduct,
   });
 
@@ -966,14 +873,24 @@ class UpdateProductRequest {
   final int priceBoard;
   @JsonKey(name: 'farmerId')
   final int farmerId;
-  @JsonKey(name: 'dateRegistration')
-  final int dateRegistration;
   @JsonKey(
     name: 'unit',
     toJson: updateProductRequestUnitToJson,
     fromJson: updateProductRequestUnitFromJson,
   )
   final enums.UpdateProductRequestUnit unit;
+  @JsonKey(name: 'startSales')
+  final int startSales;
+  @JsonKey(name: 'endSales')
+  final int endSales;
+  @JsonKey(
+    name: 'deliveryTypes',
+    toJson: updateProductRequestDeliveryTypesListToJson,
+    fromJson: updateProductRequestDeliveryTypesListFromJson,
+  )
+  final List<enums.UpdateProductRequestDeliveryTypes> deliveryTypes;
+  @JsonKey(name: 'discount')
+  final int discount;
   @JsonKey(name: 'idProduct')
   final int idProduct;
   static const fromJsonFactory = _$UpdateProductRequestFromJson;
@@ -1008,11 +925,20 @@ class UpdateProductRequest {
             (identical(other.farmerId, farmerId) ||
                 const DeepCollectionEquality()
                     .equals(other.farmerId, farmerId)) &&
-            (identical(other.dateRegistration, dateRegistration) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateRegistration, dateRegistration)) &&
             (identical(other.unit, unit) ||
                 const DeepCollectionEquality().equals(other.unit, unit)) &&
+            (identical(other.startSales, startSales) ||
+                const DeepCollectionEquality()
+                    .equals(other.startSales, startSales)) &&
+            (identical(other.endSales, endSales) ||
+                const DeepCollectionEquality()
+                    .equals(other.endSales, endSales)) &&
+            (identical(other.deliveryTypes, deliveryTypes) ||
+                const DeepCollectionEquality()
+                    .equals(other.deliveryTypes, deliveryTypes)) &&
+            (identical(other.discount, discount) ||
+                const DeepCollectionEquality()
+                    .equals(other.discount, discount)) &&
             (identical(other.idProduct, idProduct) ||
                 const DeepCollectionEquality()
                     .equals(other.idProduct, idProduct)));
@@ -1033,8 +959,11 @@ class UpdateProductRequest {
       const DeepCollectionEquality().hash(tradePrice) ^
       const DeepCollectionEquality().hash(priceBoard) ^
       const DeepCollectionEquality().hash(farmerId) ^
-      const DeepCollectionEquality().hash(dateRegistration) ^
       const DeepCollectionEquality().hash(unit) ^
+      const DeepCollectionEquality().hash(startSales) ^
+      const DeepCollectionEquality().hash(endSales) ^
+      const DeepCollectionEquality().hash(deliveryTypes) ^
+      const DeepCollectionEquality().hash(discount) ^
       const DeepCollectionEquality().hash(idProduct) ^
       runtimeType.hashCode;
 }
@@ -1051,8 +980,11 @@ extension $UpdateProductRequestExtension on UpdateProductRequest {
       int? tradePrice,
       int? priceBoard,
       int? farmerId,
-      int? dateRegistration,
       enums.UpdateProductRequestUnit? unit,
+      int? startSales,
+      int? endSales,
+      List<enums.UpdateProductRequestDeliveryTypes>? deliveryTypes,
+      int? discount,
       int? idProduct}) {
     return UpdateProductRequest(
         image: image ?? this.image,
@@ -1065,8 +997,11 @@ extension $UpdateProductRequestExtension on UpdateProductRequest {
         tradePrice: tradePrice ?? this.tradePrice,
         priceBoard: priceBoard ?? this.priceBoard,
         farmerId: farmerId ?? this.farmerId,
-        dateRegistration: dateRegistration ?? this.dateRegistration,
         unit: unit ?? this.unit,
+        startSales: startSales ?? this.startSales,
+        endSales: endSales ?? this.endSales,
+        deliveryTypes: deliveryTypes ?? this.deliveryTypes,
+        discount: discount ?? this.discount,
         idProduct: idProduct ?? this.idProduct);
   }
 
@@ -1081,8 +1016,11 @@ extension $UpdateProductRequestExtension on UpdateProductRequest {
       Wrapped<int>? tradePrice,
       Wrapped<int>? priceBoard,
       Wrapped<int>? farmerId,
-      Wrapped<int>? dateRegistration,
       Wrapped<enums.UpdateProductRequestUnit>? unit,
+      Wrapped<int>? startSales,
+      Wrapped<int>? endSales,
+      Wrapped<List<enums.UpdateProductRequestDeliveryTypes>>? deliveryTypes,
+      Wrapped<int>? discount,
       Wrapped<int>? idProduct}) {
     return UpdateProductRequest(
         image: (image != null ? image.value : this.image),
@@ -1096,10 +1034,12 @@ extension $UpdateProductRequestExtension on UpdateProductRequest {
         tradePrice: (tradePrice != null ? tradePrice.value : this.tradePrice),
         priceBoard: (priceBoard != null ? priceBoard.value : this.priceBoard),
         farmerId: (farmerId != null ? farmerId.value : this.farmerId),
-        dateRegistration: (dateRegistration != null
-            ? dateRegistration.value
-            : this.dateRegistration),
         unit: (unit != null ? unit.value : this.unit),
+        startSales: (startSales != null ? startSales.value : this.startSales),
+        endSales: (endSales != null ? endSales.value : this.endSales),
+        deliveryTypes:
+            (deliveryTypes != null ? deliveryTypes.value : this.deliveryTypes),
+        discount: (discount != null ? discount.value : this.discount),
         idProduct: (idProduct != null ? idProduct.value : this.idProduct));
   }
 }
@@ -1123,6 +1063,8 @@ class Product {
     required this.startSales,
     required this.endSales,
     required this.unit,
+    required this.discount,
+    required this.deliveryTypes,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) =>
@@ -1171,6 +1113,14 @@ class Product {
     fromJson: productUnitFromJson,
   )
   final enums.ProductUnit unit;
+  @JsonKey(name: 'discount')
+  final int discount;
+  @JsonKey(
+    name: 'deliveryTypes',
+    toJson: productDeliveryTypesListToJson,
+    fromJson: productDeliveryTypesListFromJson,
+  )
+  final List<enums.ProductDeliveryTypes> deliveryTypes;
   static const fromJsonFactory = _$ProductFromJson;
 
   @override
@@ -1216,7 +1166,13 @@ class Product {
                 const DeepCollectionEquality()
                     .equals(other.endSales, endSales)) &&
             (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)));
+                const DeepCollectionEquality().equals(other.unit, unit)) &&
+            (identical(other.discount, discount) ||
+                const DeepCollectionEquality()
+                    .equals(other.discount, discount)) &&
+            (identical(other.deliveryTypes, deliveryTypes) ||
+                const DeepCollectionEquality()
+                    .equals(other.deliveryTypes, deliveryTypes)));
   }
 
   @override
@@ -1240,6 +1196,8 @@ class Product {
       const DeepCollectionEquality().hash(startSales) ^
       const DeepCollectionEquality().hash(endSales) ^
       const DeepCollectionEquality().hash(unit) ^
+      const DeepCollectionEquality().hash(discount) ^
+      const DeepCollectionEquality().hash(deliveryTypes) ^
       runtimeType.hashCode;
 }
 
@@ -1260,7 +1218,9 @@ extension $ProductExtension on Product {
       int? dateRegistration,
       int? startSales,
       int? endSales,
-      enums.ProductUnit? unit}) {
+      enums.ProductUnit? unit,
+      int? discount,
+      List<enums.ProductDeliveryTypes>? deliveryTypes}) {
     return Product(
         id: id ?? this.id,
         image: image ?? this.image,
@@ -1277,7 +1237,9 @@ extension $ProductExtension on Product {
         dateRegistration: dateRegistration ?? this.dateRegistration,
         startSales: startSales ?? this.startSales,
         endSales: endSales ?? this.endSales,
-        unit: unit ?? this.unit);
+        unit: unit ?? this.unit,
+        discount: discount ?? this.discount,
+        deliveryTypes: deliveryTypes ?? this.deliveryTypes);
   }
 
   Product copyWithWrapped(
@@ -1296,7 +1258,9 @@ extension $ProductExtension on Product {
       Wrapped<int>? dateRegistration,
       Wrapped<int>? startSales,
       Wrapped<int>? endSales,
-      Wrapped<enums.ProductUnit>? unit}) {
+      Wrapped<enums.ProductUnit>? unit,
+      Wrapped<int>? discount,
+      Wrapped<List<enums.ProductDeliveryTypes>>? deliveryTypes}) {
     return Product(
         id: (id != null ? id.value : this.id),
         image: (image != null ? image.value : this.image),
@@ -1316,7 +1280,10 @@ extension $ProductExtension on Product {
             : this.dateRegistration),
         startSales: (startSales != null ? startSales.value : this.startSales),
         endSales: (endSales != null ? endSales.value : this.endSales),
-        unit: (unit != null ? unit.value : this.unit));
+        unit: (unit != null ? unit.value : this.unit),
+        discount: (discount != null ? discount.value : this.discount),
+        deliveryTypes:
+            (deliveryTypes != null ? deliveryTypes.value : this.deliveryTypes));
   }
 }
 
@@ -1333,8 +1300,11 @@ class AddProductRequest {
     required this.tradePrice,
     required this.priceBoard,
     required this.farmerId,
-    required this.dateRegistration,
     required this.unit,
+    required this.startSales,
+    required this.endSales,
+    required this.deliveryTypes,
+    required this.discount,
   });
 
   factory AddProductRequest.fromJson(Map<String, dynamic> json) =>
@@ -1367,14 +1337,24 @@ class AddProductRequest {
   final int priceBoard;
   @JsonKey(name: 'farmerId')
   final int farmerId;
-  @JsonKey(name: 'dateRegistration')
-  final int dateRegistration;
   @JsonKey(
     name: 'unit',
     toJson: addProductRequestUnitToJson,
     fromJson: addProductRequestUnitFromJson,
   )
   final enums.AddProductRequestUnit unit;
+  @JsonKey(name: 'startSales')
+  final int startSales;
+  @JsonKey(name: 'endSales')
+  final int endSales;
+  @JsonKey(
+    name: 'deliveryTypes',
+    toJson: addProductRequestDeliveryTypesListToJson,
+    fromJson: addProductRequestDeliveryTypesListFromJson,
+  )
+  final List<enums.AddProductRequestDeliveryTypes> deliveryTypes;
+  @JsonKey(name: 'discount')
+  final int discount;
   static const fromJsonFactory = _$AddProductRequestFromJson;
 
   @override
@@ -1407,11 +1387,20 @@ class AddProductRequest {
             (identical(other.farmerId, farmerId) ||
                 const DeepCollectionEquality()
                     .equals(other.farmerId, farmerId)) &&
-            (identical(other.dateRegistration, dateRegistration) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateRegistration, dateRegistration)) &&
             (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)));
+                const DeepCollectionEquality().equals(other.unit, unit)) &&
+            (identical(other.startSales, startSales) ||
+                const DeepCollectionEquality()
+                    .equals(other.startSales, startSales)) &&
+            (identical(other.endSales, endSales) ||
+                const DeepCollectionEquality()
+                    .equals(other.endSales, endSales)) &&
+            (identical(other.deliveryTypes, deliveryTypes) ||
+                const DeepCollectionEquality()
+                    .equals(other.deliveryTypes, deliveryTypes)) &&
+            (identical(other.discount, discount) ||
+                const DeepCollectionEquality()
+                    .equals(other.discount, discount)));
   }
 
   @override
@@ -1429,8 +1418,11 @@ class AddProductRequest {
       const DeepCollectionEquality().hash(tradePrice) ^
       const DeepCollectionEquality().hash(priceBoard) ^
       const DeepCollectionEquality().hash(farmerId) ^
-      const DeepCollectionEquality().hash(dateRegistration) ^
       const DeepCollectionEquality().hash(unit) ^
+      const DeepCollectionEquality().hash(startSales) ^
+      const DeepCollectionEquality().hash(endSales) ^
+      const DeepCollectionEquality().hash(deliveryTypes) ^
+      const DeepCollectionEquality().hash(discount) ^
       runtimeType.hashCode;
 }
 
@@ -1446,8 +1438,11 @@ extension $AddProductRequestExtension on AddProductRequest {
       int? tradePrice,
       int? priceBoard,
       int? farmerId,
-      int? dateRegistration,
-      enums.AddProductRequestUnit? unit}) {
+      enums.AddProductRequestUnit? unit,
+      int? startSales,
+      int? endSales,
+      List<enums.AddProductRequestDeliveryTypes>? deliveryTypes,
+      int? discount}) {
     return AddProductRequest(
         image: image ?? this.image,
         description: description ?? this.description,
@@ -1459,8 +1454,11 @@ extension $AddProductRequestExtension on AddProductRequest {
         tradePrice: tradePrice ?? this.tradePrice,
         priceBoard: priceBoard ?? this.priceBoard,
         farmerId: farmerId ?? this.farmerId,
-        dateRegistration: dateRegistration ?? this.dateRegistration,
-        unit: unit ?? this.unit);
+        unit: unit ?? this.unit,
+        startSales: startSales ?? this.startSales,
+        endSales: endSales ?? this.endSales,
+        deliveryTypes: deliveryTypes ?? this.deliveryTypes,
+        discount: discount ?? this.discount);
   }
 
   AddProductRequest copyWithWrapped(
@@ -1474,8 +1472,11 @@ extension $AddProductRequestExtension on AddProductRequest {
       Wrapped<int>? tradePrice,
       Wrapped<int>? priceBoard,
       Wrapped<int>? farmerId,
-      Wrapped<int>? dateRegistration,
-      Wrapped<enums.AddProductRequestUnit>? unit}) {
+      Wrapped<enums.AddProductRequestUnit>? unit,
+      Wrapped<int>? startSales,
+      Wrapped<int>? endSales,
+      Wrapped<List<enums.AddProductRequestDeliveryTypes>>? deliveryTypes,
+      Wrapped<int>? discount}) {
     return AddProductRequest(
         image: (image != null ? image.value : this.image),
         description:
@@ -1488,10 +1489,987 @@ extension $AddProductRequestExtension on AddProductRequest {
         tradePrice: (tradePrice != null ? tradePrice.value : this.tradePrice),
         priceBoard: (priceBoard != null ? priceBoard.value : this.priceBoard),
         farmerId: (farmerId != null ? farmerId.value : this.farmerId),
+        unit: (unit != null ? unit.value : this.unit),
+        startSales: (startSales != null ? startSales.value : this.startSales),
+        endSales: (endSales != null ? endSales.value : this.endSales),
+        deliveryTypes:
+            (deliveryTypes != null ? deliveryTypes.value : this.deliveryTypes),
+        discount: (discount != null ? discount.value : this.discount));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class AddDiscountRequest {
+  AddDiscountRequest({
+    required this.productId,
+    required this.discount,
+  });
+
+  factory AddDiscountRequest.fromJson(Map<String, dynamic> json) =>
+      _$AddDiscountRequestFromJson(json);
+
+  static const toJsonFactory = _$AddDiscountRequestToJson;
+  Map<String, dynamic> toJson() => _$AddDiscountRequestToJson(this);
+
+  @JsonKey(name: 'productId')
+  final int productId;
+  @JsonKey(name: 'discount')
+  final int discount;
+  static const fromJsonFactory = _$AddDiscountRequestFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is AddDiscountRequest &&
+            (identical(other.productId, productId) ||
+                const DeepCollectionEquality()
+                    .equals(other.productId, productId)) &&
+            (identical(other.discount, discount) ||
+                const DeepCollectionEquality()
+                    .equals(other.discount, discount)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(productId) ^
+      const DeepCollectionEquality().hash(discount) ^
+      runtimeType.hashCode;
+}
+
+extension $AddDiscountRequestExtension on AddDiscountRequest {
+  AddDiscountRequest copyWith({int? productId, int? discount}) {
+    return AddDiscountRequest(
+        productId: productId ?? this.productId,
+        discount: discount ?? this.discount);
+  }
+
+  AddDiscountRequest copyWithWrapped(
+      {Wrapped<int>? productId, Wrapped<int>? discount}) {
+    return AddDiscountRequest(
+        productId: (productId != null ? productId.value : this.productId),
+        discount: (discount != null ? discount.value : this.discount));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class Mark {
+  Mark({
+    required this.toId,
+    required this.mark,
+  });
+
+  factory Mark.fromJson(Map<String, dynamic> json) => _$MarkFromJson(json);
+
+  static const toJsonFactory = _$MarkToJson;
+  Map<String, dynamic> toJson() => _$MarkToJson(this);
+
+  @JsonKey(name: 'toId')
+  final int toId;
+  @JsonKey(name: 'mark')
+  final int mark;
+  static const fromJsonFactory = _$MarkFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Mark &&
+            (identical(other.toId, toId) ||
+                const DeepCollectionEquality().equals(other.toId, toId)) &&
+            (identical(other.mark, mark) ||
+                const DeepCollectionEquality().equals(other.mark, mark)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(toId) ^
+      const DeepCollectionEquality().hash(mark) ^
+      runtimeType.hashCode;
+}
+
+extension $MarkExtension on Mark {
+  Mark copyWith({int? toId, int? mark}) {
+    return Mark(toId: toId ?? this.toId, mark: mark ?? this.mark);
+  }
+
+  Mark copyWithWrapped({Wrapped<int>? toId, Wrapped<int>? mark}) {
+    return Mark(
+        toId: (toId != null ? toId.value : this.toId),
+        mark: (mark != null ? mark.value : this.mark));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class UpdateDeliveryRequest {
+  UpdateDeliveryRequest({
+    required this.id,
+    required this.deliveryType,
+    required this.date,
+    required this.adressFrom,
+    required this.adressTo,
+    required this.period,
+    required this.productId,
+    required this.farmerId,
+    required this.consumerId,
+    required this.paymentType,
+  });
+
+  factory UpdateDeliveryRequest.fromJson(Map<String, dynamic> json) =>
+      _$UpdateDeliveryRequestFromJson(json);
+
+  static const toJsonFactory = _$UpdateDeliveryRequestToJson;
+  Map<String, dynamic> toJson() => _$UpdateDeliveryRequestToJson(this);
+
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(
+    name: 'deliveryType',
+    toJson: updateDeliveryRequestDeliveryTypeToJson,
+    fromJson: updateDeliveryRequestDeliveryTypeFromJson,
+  )
+  final enums.UpdateDeliveryRequestDeliveryType deliveryType;
+  @JsonKey(name: 'date')
+  final int date;
+  @JsonKey(name: 'adressFrom')
+  final String adressFrom;
+  @JsonKey(name: 'adressTo')
+  final String adressTo;
+  @JsonKey(name: 'period')
+  final int period;
+  @JsonKey(name: 'productId')
+  final int productId;
+  @JsonKey(name: 'farmerId')
+  final int farmerId;
+  @JsonKey(name: 'consumerId')
+  final int consumerId;
+  @JsonKey(
+    name: 'paymentType',
+    toJson: updateDeliveryRequestPaymentTypeToJson,
+    fromJson: updateDeliveryRequestPaymentTypeFromJson,
+  )
+  final enums.UpdateDeliveryRequestPaymentType paymentType;
+  static const fromJsonFactory = _$UpdateDeliveryRequestFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UpdateDeliveryRequest &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.deliveryType, deliveryType) ||
+                const DeepCollectionEquality()
+                    .equals(other.deliveryType, deliveryType)) &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.adressFrom, adressFrom) ||
+                const DeepCollectionEquality()
+                    .equals(other.adressFrom, adressFrom)) &&
+            (identical(other.adressTo, adressTo) ||
+                const DeepCollectionEquality()
+                    .equals(other.adressTo, adressTo)) &&
+            (identical(other.period, period) ||
+                const DeepCollectionEquality().equals(other.period, period)) &&
+            (identical(other.productId, productId) ||
+                const DeepCollectionEquality()
+                    .equals(other.productId, productId)) &&
+            (identical(other.farmerId, farmerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.farmerId, farmerId)) &&
+            (identical(other.consumerId, consumerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.consumerId, consumerId)) &&
+            (identical(other.paymentType, paymentType) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentType, paymentType)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(deliveryType) ^
+      const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(adressFrom) ^
+      const DeepCollectionEquality().hash(adressTo) ^
+      const DeepCollectionEquality().hash(period) ^
+      const DeepCollectionEquality().hash(productId) ^
+      const DeepCollectionEquality().hash(farmerId) ^
+      const DeepCollectionEquality().hash(consumerId) ^
+      const DeepCollectionEquality().hash(paymentType) ^
+      runtimeType.hashCode;
+}
+
+extension $UpdateDeliveryRequestExtension on UpdateDeliveryRequest {
+  UpdateDeliveryRequest copyWith(
+      {int? id,
+      enums.UpdateDeliveryRequestDeliveryType? deliveryType,
+      int? date,
+      String? adressFrom,
+      String? adressTo,
+      int? period,
+      int? productId,
+      int? farmerId,
+      int? consumerId,
+      enums.UpdateDeliveryRequestPaymentType? paymentType}) {
+    return UpdateDeliveryRequest(
+        id: id ?? this.id,
+        deliveryType: deliveryType ?? this.deliveryType,
+        date: date ?? this.date,
+        adressFrom: adressFrom ?? this.adressFrom,
+        adressTo: adressTo ?? this.adressTo,
+        period: period ?? this.period,
+        productId: productId ?? this.productId,
+        farmerId: farmerId ?? this.farmerId,
+        consumerId: consumerId ?? this.consumerId,
+        paymentType: paymentType ?? this.paymentType);
+  }
+
+  UpdateDeliveryRequest copyWithWrapped(
+      {Wrapped<int>? id,
+      Wrapped<enums.UpdateDeliveryRequestDeliveryType>? deliveryType,
+      Wrapped<int>? date,
+      Wrapped<String>? adressFrom,
+      Wrapped<String>? adressTo,
+      Wrapped<int>? period,
+      Wrapped<int>? productId,
+      Wrapped<int>? farmerId,
+      Wrapped<int>? consumerId,
+      Wrapped<enums.UpdateDeliveryRequestPaymentType>? paymentType}) {
+    return UpdateDeliveryRequest(
+        id: (id != null ? id.value : this.id),
+        deliveryType:
+            (deliveryType != null ? deliveryType.value : this.deliveryType),
+        date: (date != null ? date.value : this.date),
+        adressFrom: (adressFrom != null ? adressFrom.value : this.adressFrom),
+        adressTo: (adressTo != null ? adressTo.value : this.adressTo),
+        period: (period != null ? period.value : this.period),
+        productId: (productId != null ? productId.value : this.productId),
+        farmerId: (farmerId != null ? farmerId.value : this.farmerId),
+        consumerId: (consumerId != null ? consumerId.value : this.consumerId),
+        paymentType:
+            (paymentType != null ? paymentType.value : this.paymentType));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class Delivery {
+  Delivery({
+    required this.id,
+    required this.deliveryType,
+    required this.date,
+    required this.adressFrom,
+    required this.adressTo,
+    required this.period,
+    required this.product,
+    required this.consumerId,
+    required this.farmerId,
+    required this.paymentType,
+    required this.count,
+  });
+
+  factory Delivery.fromJson(Map<String, dynamic> json) =>
+      _$DeliveryFromJson(json);
+
+  static const toJsonFactory = _$DeliveryToJson;
+  Map<String, dynamic> toJson() => _$DeliveryToJson(this);
+
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(
+    name: 'deliveryType',
+    toJson: deliveryDeliveryTypeToJson,
+    fromJson: deliveryDeliveryTypeFromJson,
+  )
+  final enums.DeliveryDeliveryType deliveryType;
+  @JsonKey(name: 'date')
+  final int date;
+  @JsonKey(name: 'adressFrom')
+  final String adressFrom;
+  @JsonKey(name: 'adressTo')
+  final String adressTo;
+  @JsonKey(name: 'period')
+  final int period;
+  @JsonKey(name: 'product')
+  final Product product;
+  @JsonKey(name: 'consumerId')
+  final int consumerId;
+  @JsonKey(name: 'farmerId')
+  final int farmerId;
+  @JsonKey(
+    name: 'paymentType',
+    toJson: deliveryPaymentTypeToJson,
+    fromJson: deliveryPaymentTypeFromJson,
+  )
+  final enums.DeliveryPaymentType paymentType;
+  @JsonKey(name: 'count')
+  final int count;
+  static const fromJsonFactory = _$DeliveryFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Delivery &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.deliveryType, deliveryType) ||
+                const DeepCollectionEquality()
+                    .equals(other.deliveryType, deliveryType)) &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.adressFrom, adressFrom) ||
+                const DeepCollectionEquality()
+                    .equals(other.adressFrom, adressFrom)) &&
+            (identical(other.adressTo, adressTo) ||
+                const DeepCollectionEquality()
+                    .equals(other.adressTo, adressTo)) &&
+            (identical(other.period, period) ||
+                const DeepCollectionEquality().equals(other.period, period)) &&
+            (identical(other.product, product) ||
+                const DeepCollectionEquality()
+                    .equals(other.product, product)) &&
+            (identical(other.consumerId, consumerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.consumerId, consumerId)) &&
+            (identical(other.farmerId, farmerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.farmerId, farmerId)) &&
+            (identical(other.paymentType, paymentType) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentType, paymentType)) &&
+            (identical(other.count, count) ||
+                const DeepCollectionEquality().equals(other.count, count)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(deliveryType) ^
+      const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(adressFrom) ^
+      const DeepCollectionEquality().hash(adressTo) ^
+      const DeepCollectionEquality().hash(period) ^
+      const DeepCollectionEquality().hash(product) ^
+      const DeepCollectionEquality().hash(consumerId) ^
+      const DeepCollectionEquality().hash(farmerId) ^
+      const DeepCollectionEquality().hash(paymentType) ^
+      const DeepCollectionEquality().hash(count) ^
+      runtimeType.hashCode;
+}
+
+extension $DeliveryExtension on Delivery {
+  Delivery copyWith(
+      {int? id,
+      enums.DeliveryDeliveryType? deliveryType,
+      int? date,
+      String? adressFrom,
+      String? adressTo,
+      int? period,
+      Product? product,
+      int? consumerId,
+      int? farmerId,
+      enums.DeliveryPaymentType? paymentType,
+      int? count}) {
+    return Delivery(
+        id: id ?? this.id,
+        deliveryType: deliveryType ?? this.deliveryType,
+        date: date ?? this.date,
+        adressFrom: adressFrom ?? this.adressFrom,
+        adressTo: adressTo ?? this.adressTo,
+        period: period ?? this.period,
+        product: product ?? this.product,
+        consumerId: consumerId ?? this.consumerId,
+        farmerId: farmerId ?? this.farmerId,
+        paymentType: paymentType ?? this.paymentType,
+        count: count ?? this.count);
+  }
+
+  Delivery copyWithWrapped(
+      {Wrapped<int>? id,
+      Wrapped<enums.DeliveryDeliveryType>? deliveryType,
+      Wrapped<int>? date,
+      Wrapped<String>? adressFrom,
+      Wrapped<String>? adressTo,
+      Wrapped<int>? period,
+      Wrapped<Product>? product,
+      Wrapped<int>? consumerId,
+      Wrapped<int>? farmerId,
+      Wrapped<enums.DeliveryPaymentType>? paymentType,
+      Wrapped<int>? count}) {
+    return Delivery(
+        id: (id != null ? id.value : this.id),
+        deliveryType:
+            (deliveryType != null ? deliveryType.value : this.deliveryType),
+        date: (date != null ? date.value : this.date),
+        adressFrom: (adressFrom != null ? adressFrom.value : this.adressFrom),
+        adressTo: (adressTo != null ? adressTo.value : this.adressTo),
+        period: (period != null ? period.value : this.period),
+        product: (product != null ? product.value : this.product),
+        consumerId: (consumerId != null ? consumerId.value : this.consumerId),
+        farmerId: (farmerId != null ? farmerId.value : this.farmerId),
+        paymentType:
+            (paymentType != null ? paymentType.value : this.paymentType),
+        count: (count != null ? count.value : this.count));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class AddDeliveryRequest {
+  AddDeliveryRequest({
+    required this.deliveryType,
+    required this.date,
+    required this.adressFrom,
+    required this.adressTo,
+    required this.period,
+    required this.productId,
+    required this.farmerId,
+    required this.consumerId,
+    required this.paymentType,
+    required this.count,
+  });
+
+  factory AddDeliveryRequest.fromJson(Map<String, dynamic> json) =>
+      _$AddDeliveryRequestFromJson(json);
+
+  static const toJsonFactory = _$AddDeliveryRequestToJson;
+  Map<String, dynamic> toJson() => _$AddDeliveryRequestToJson(this);
+
+  @JsonKey(
+    name: 'deliveryType',
+    toJson: addDeliveryRequestDeliveryTypeToJson,
+    fromJson: addDeliveryRequestDeliveryTypeFromJson,
+  )
+  final enums.AddDeliveryRequestDeliveryType deliveryType;
+  @JsonKey(name: 'date')
+  final int date;
+  @JsonKey(name: 'adressFrom')
+  final String adressFrom;
+  @JsonKey(name: 'adressTo')
+  final String adressTo;
+  @JsonKey(name: 'period')
+  final int period;
+  @JsonKey(name: 'productId')
+  final int productId;
+  @JsonKey(name: 'farmerId')
+  final int farmerId;
+  @JsonKey(name: 'consumerId')
+  final int consumerId;
+  @JsonKey(
+    name: 'paymentType',
+    toJson: addDeliveryRequestPaymentTypeToJson,
+    fromJson: addDeliveryRequestPaymentTypeFromJson,
+  )
+  final enums.AddDeliveryRequestPaymentType paymentType;
+  @JsonKey(name: 'count')
+  final int count;
+  static const fromJsonFactory = _$AddDeliveryRequestFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is AddDeliveryRequest &&
+            (identical(other.deliveryType, deliveryType) ||
+                const DeepCollectionEquality()
+                    .equals(other.deliveryType, deliveryType)) &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.adressFrom, adressFrom) ||
+                const DeepCollectionEquality()
+                    .equals(other.adressFrom, adressFrom)) &&
+            (identical(other.adressTo, adressTo) ||
+                const DeepCollectionEquality()
+                    .equals(other.adressTo, adressTo)) &&
+            (identical(other.period, period) ||
+                const DeepCollectionEquality().equals(other.period, period)) &&
+            (identical(other.productId, productId) ||
+                const DeepCollectionEquality()
+                    .equals(other.productId, productId)) &&
+            (identical(other.farmerId, farmerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.farmerId, farmerId)) &&
+            (identical(other.consumerId, consumerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.consumerId, consumerId)) &&
+            (identical(other.paymentType, paymentType) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentType, paymentType)) &&
+            (identical(other.count, count) ||
+                const DeepCollectionEquality().equals(other.count, count)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(deliveryType) ^
+      const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(adressFrom) ^
+      const DeepCollectionEquality().hash(adressTo) ^
+      const DeepCollectionEquality().hash(period) ^
+      const DeepCollectionEquality().hash(productId) ^
+      const DeepCollectionEquality().hash(farmerId) ^
+      const DeepCollectionEquality().hash(consumerId) ^
+      const DeepCollectionEquality().hash(paymentType) ^
+      const DeepCollectionEquality().hash(count) ^
+      runtimeType.hashCode;
+}
+
+extension $AddDeliveryRequestExtension on AddDeliveryRequest {
+  AddDeliveryRequest copyWith(
+      {enums.AddDeliveryRequestDeliveryType? deliveryType,
+      int? date,
+      String? adressFrom,
+      String? adressTo,
+      int? period,
+      int? productId,
+      int? farmerId,
+      int? consumerId,
+      enums.AddDeliveryRequestPaymentType? paymentType,
+      int? count}) {
+    return AddDeliveryRequest(
+        deliveryType: deliveryType ?? this.deliveryType,
+        date: date ?? this.date,
+        adressFrom: adressFrom ?? this.adressFrom,
+        adressTo: adressTo ?? this.adressTo,
+        period: period ?? this.period,
+        productId: productId ?? this.productId,
+        farmerId: farmerId ?? this.farmerId,
+        consumerId: consumerId ?? this.consumerId,
+        paymentType: paymentType ?? this.paymentType,
+        count: count ?? this.count);
+  }
+
+  AddDeliveryRequest copyWithWrapped(
+      {Wrapped<enums.AddDeliveryRequestDeliveryType>? deliveryType,
+      Wrapped<int>? date,
+      Wrapped<String>? adressFrom,
+      Wrapped<String>? adressTo,
+      Wrapped<int>? period,
+      Wrapped<int>? productId,
+      Wrapped<int>? farmerId,
+      Wrapped<int>? consumerId,
+      Wrapped<enums.AddDeliveryRequestPaymentType>? paymentType,
+      Wrapped<int>? count}) {
+    return AddDeliveryRequest(
+        deliveryType:
+            (deliveryType != null ? deliveryType.value : this.deliveryType),
+        date: (date != null ? date.value : this.date),
+        adressFrom: (adressFrom != null ? adressFrom.value : this.adressFrom),
+        adressTo: (adressTo != null ? adressTo.value : this.adressTo),
+        period: (period != null ? period.value : this.period),
+        productId: (productId != null ? productId.value : this.productId),
+        farmerId: (farmerId != null ? farmerId.value : this.farmerId),
+        consumerId: (consumerId != null ? consumerId.value : this.consumerId),
+        paymentType:
+            (paymentType != null ? paymentType.value : this.paymentType),
+        count: (count != null ? count.value : this.count));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class UpdateCourseRequest {
+  UpdateCourseRequest({
+    required this.id,
+    required this.link,
+    required this.header,
+    required this.description,
+  });
+
+  factory UpdateCourseRequest.fromJson(Map<String, dynamic> json) =>
+      _$UpdateCourseRequestFromJson(json);
+
+  static const toJsonFactory = _$UpdateCourseRequestToJson;
+  Map<String, dynamic> toJson() => _$UpdateCourseRequestToJson(this);
+
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(name: 'link')
+  final String link;
+  @JsonKey(name: 'header')
+  final String header;
+  @JsonKey(name: 'description')
+  final String description;
+  static const fromJsonFactory = _$UpdateCourseRequestFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UpdateCourseRequest &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.link, link) ||
+                const DeepCollectionEquality().equals(other.link, link)) &&
+            (identical(other.header, header) ||
+                const DeepCollectionEquality().equals(other.header, header)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(link) ^
+      const DeepCollectionEquality().hash(header) ^
+      const DeepCollectionEquality().hash(description) ^
+      runtimeType.hashCode;
+}
+
+extension $UpdateCourseRequestExtension on UpdateCourseRequest {
+  UpdateCourseRequest copyWith(
+      {int? id, String? link, String? header, String? description}) {
+    return UpdateCourseRequest(
+        id: id ?? this.id,
+        link: link ?? this.link,
+        header: header ?? this.header,
+        description: description ?? this.description);
+  }
+
+  UpdateCourseRequest copyWithWrapped(
+      {Wrapped<int>? id,
+      Wrapped<String>? link,
+      Wrapped<String>? header,
+      Wrapped<String>? description}) {
+    return UpdateCourseRequest(
+        id: (id != null ? id.value : this.id),
+        link: (link != null ? link.value : this.link),
+        header: (header != null ? header.value : this.header),
+        description:
+            (description != null ? description.value : this.description));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class Course {
+  Course({
+    required this.id,
+    required this.link,
+    required this.header,
+    required this.description,
+  });
+
+  factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);
+
+  static const toJsonFactory = _$CourseToJson;
+  Map<String, dynamic> toJson() => _$CourseToJson(this);
+
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(name: 'link')
+  final String link;
+  @JsonKey(name: 'header')
+  final String header;
+  @JsonKey(name: 'description')
+  final String description;
+  static const fromJsonFactory = _$CourseFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Course &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.link, link) ||
+                const DeepCollectionEquality().equals(other.link, link)) &&
+            (identical(other.header, header) ||
+                const DeepCollectionEquality().equals(other.header, header)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(link) ^
+      const DeepCollectionEquality().hash(header) ^
+      const DeepCollectionEquality().hash(description) ^
+      runtimeType.hashCode;
+}
+
+extension $CourseExtension on Course {
+  Course copyWith(
+      {int? id, String? link, String? header, String? description}) {
+    return Course(
+        id: id ?? this.id,
+        link: link ?? this.link,
+        header: header ?? this.header,
+        description: description ?? this.description);
+  }
+
+  Course copyWithWrapped(
+      {Wrapped<int>? id,
+      Wrapped<String>? link,
+      Wrapped<String>? header,
+      Wrapped<String>? description}) {
+    return Course(
+        id: (id != null ? id.value : this.id),
+        link: (link != null ? link.value : this.link),
+        header: (header != null ? header.value : this.header),
+        description:
+            (description != null ? description.value : this.description));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class AddCourseRequest {
+  AddCourseRequest({
+    required this.link,
+    required this.header,
+    required this.description,
+  });
+
+  factory AddCourseRequest.fromJson(Map<String, dynamic> json) =>
+      _$AddCourseRequestFromJson(json);
+
+  static const toJsonFactory = _$AddCourseRequestToJson;
+  Map<String, dynamic> toJson() => _$AddCourseRequestToJson(this);
+
+  @JsonKey(name: 'link')
+  final String link;
+  @JsonKey(name: 'header')
+  final String header;
+  @JsonKey(name: 'description')
+  final String description;
+  static const fromJsonFactory = _$AddCourseRequestFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is AddCourseRequest &&
+            (identical(other.link, link) ||
+                const DeepCollectionEquality().equals(other.link, link)) &&
+            (identical(other.header, header) ||
+                const DeepCollectionEquality().equals(other.header, header)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(link) ^
+      const DeepCollectionEquality().hash(header) ^
+      const DeepCollectionEquality().hash(description) ^
+      runtimeType.hashCode;
+}
+
+extension $AddCourseRequestExtension on AddCourseRequest {
+  AddCourseRequest copyWith(
+      {String? link, String? header, String? description}) {
+    return AddCourseRequest(
+        link: link ?? this.link,
+        header: header ?? this.header,
+        description: description ?? this.description);
+  }
+
+  AddCourseRequest copyWithWrapped(
+      {Wrapped<String>? link,
+      Wrapped<String>? header,
+      Wrapped<String>? description}) {
+    return AddCourseRequest(
+        link: (link != null ? link.value : this.link),
+        header: (header != null ? header.value : this.header),
+        description:
+            (description != null ? description.value : this.description));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class Cart {
+  Cart({
+    required this.id,
+    required this.owner,
+    required this.products,
+  });
+
+  factory Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
+
+  static const toJsonFactory = _$CartToJson;
+  Map<String, dynamic> toJson() => _$CartToJson(this);
+
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(name: 'owner')
+  final UserInfo owner;
+  @JsonKey(name: 'products', defaultValue: <Product>[])
+  final List<Product> products;
+  static const fromJsonFactory = _$CartFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Cart &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.owner, owner) ||
+                const DeepCollectionEquality().equals(other.owner, owner)) &&
+            (identical(other.products, products) ||
+                const DeepCollectionEquality()
+                    .equals(other.products, products)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(owner) ^
+      const DeepCollectionEquality().hash(products) ^
+      runtimeType.hashCode;
+}
+
+extension $CartExtension on Cart {
+  Cart copyWith({int? id, UserInfo? owner, List<Product>? products}) {
+    return Cart(
+        id: id ?? this.id,
+        owner: owner ?? this.owner,
+        products: products ?? this.products);
+  }
+
+  Cart copyWithWrapped(
+      {Wrapped<int>? id,
+      Wrapped<UserInfo>? owner,
+      Wrapped<List<Product>>? products}) {
+    return Cart(
+        id: (id != null ? id.value : this.id),
+        owner: (owner != null ? owner.value : this.owner),
+        products: (products != null ? products.value : this.products));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class UserInfo {
+  UserInfo({
+    required this.fullName,
+    required this.bio,
+    required this.email,
+    required this.id,
+    required this.roles,
+    required this.dateRegistration,
+    required this.rating,
+  });
+
+  factory UserInfo.fromJson(Map<String, dynamic> json) =>
+      _$UserInfoFromJson(json);
+
+  static const toJsonFactory = _$UserInfoToJson;
+  Map<String, dynamic> toJson() => _$UserInfoToJson(this);
+
+  @JsonKey(name: 'fullName')
+  final String fullName;
+  @JsonKey(name: 'bio')
+  final String bio;
+  @JsonKey(name: 'email')
+  final String email;
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(
+    name: 'roles',
+    toJson: userInfoRolesListToJson,
+    fromJson: userInfoRolesListFromJson,
+  )
+  final List<enums.UserInfoRoles> roles;
+  @JsonKey(name: 'dateRegistration')
+  final int dateRegistration;
+  @JsonKey(name: 'rating')
+  final double rating;
+  static const fromJsonFactory = _$UserInfoFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UserInfo &&
+            (identical(other.fullName, fullName) ||
+                const DeepCollectionEquality()
+                    .equals(other.fullName, fullName)) &&
+            (identical(other.bio, bio) ||
+                const DeepCollectionEquality().equals(other.bio, bio)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.roles, roles) ||
+                const DeepCollectionEquality().equals(other.roles, roles)) &&
+            (identical(other.dateRegistration, dateRegistration) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateRegistration, dateRegistration)) &&
+            (identical(other.rating, rating) ||
+                const DeepCollectionEquality().equals(other.rating, rating)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(fullName) ^
+      const DeepCollectionEquality().hash(bio) ^
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(roles) ^
+      const DeepCollectionEquality().hash(dateRegistration) ^
+      const DeepCollectionEquality().hash(rating) ^
+      runtimeType.hashCode;
+}
+
+extension $UserInfoExtension on UserInfo {
+  UserInfo copyWith(
+      {String? fullName,
+      String? bio,
+      String? email,
+      int? id,
+      List<enums.UserInfoRoles>? roles,
+      int? dateRegistration,
+      double? rating}) {
+    return UserInfo(
+        fullName: fullName ?? this.fullName,
+        bio: bio ?? this.bio,
+        email: email ?? this.email,
+        id: id ?? this.id,
+        roles: roles ?? this.roles,
+        dateRegistration: dateRegistration ?? this.dateRegistration,
+        rating: rating ?? this.rating);
+  }
+
+  UserInfo copyWithWrapped(
+      {Wrapped<String>? fullName,
+      Wrapped<String>? bio,
+      Wrapped<String>? email,
+      Wrapped<int>? id,
+      Wrapped<List<enums.UserInfoRoles>>? roles,
+      Wrapped<int>? dateRegistration,
+      Wrapped<double>? rating}) {
+    return UserInfo(
+        fullName: (fullName != null ? fullName.value : this.fullName),
+        bio: (bio != null ? bio.value : this.bio),
+        email: (email != null ? email.value : this.email),
+        id: (id != null ? id.value : this.id),
+        roles: (roles != null ? roles.value : this.roles),
         dateRegistration: (dateRegistration != null
             ? dateRegistration.value
             : this.dateRegistration),
-        unit: (unit != null ? unit.value : this.unit));
+        rating: (rating != null ? rating.value : this.rating));
   }
 }
 
@@ -1813,6 +2791,162 @@ extension $ChangeRoleRequestExtension on ChangeRoleRequest {
 }
 
 @JsonSerializable(explicitToJson: true)
+class ChangePasswordRequest {
+  ChangePasswordRequest({
+    required this.id,
+    required this.password,
+  });
+
+  factory ChangePasswordRequest.fromJson(Map<String, dynamic> json) =>
+      _$ChangePasswordRequestFromJson(json);
+
+  static const toJsonFactory = _$ChangePasswordRequestToJson;
+  Map<String, dynamic> toJson() => _$ChangePasswordRequestToJson(this);
+
+  @JsonKey(name: 'id')
+  final int id;
+  @JsonKey(name: 'password')
+  final String password;
+  static const fromJsonFactory = _$ChangePasswordRequestFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ChangePasswordRequest &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(password) ^
+      runtimeType.hashCode;
+}
+
+extension $ChangePasswordRequestExtension on ChangePasswordRequest {
+  ChangePasswordRequest copyWith({int? id, String? password}) {
+    return ChangePasswordRequest(
+        id: id ?? this.id, password: password ?? this.password);
+  }
+
+  ChangePasswordRequest copyWithWrapped(
+      {Wrapped<int>? id, Wrapped<String>? password}) {
+    return ChangePasswordRequest(
+        id: (id != null ? id.value : this.id),
+        password: (password != null ? password.value : this.password));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class SignUpCustomRequest {
+  SignUpCustomRequest({
+    required this.fullName,
+    required this.bio,
+    required this.email,
+    required this.code,
+    required this.password,
+    required this.dateRegistration,
+  });
+
+  factory SignUpCustomRequest.fromJson(Map<String, dynamic> json) =>
+      _$SignUpCustomRequestFromJson(json);
+
+  static const toJsonFactory = _$SignUpCustomRequestToJson;
+  Map<String, dynamic> toJson() => _$SignUpCustomRequestToJson(this);
+
+  @JsonKey(name: 'fullName')
+  final String fullName;
+  @JsonKey(name: 'bio')
+  final String bio;
+  @JsonKey(name: 'email')
+  final String email;
+  @JsonKey(name: 'code')
+  final String code;
+  @JsonKey(name: 'password')
+  final String password;
+  @JsonKey(name: 'dateRegistration')
+  final int dateRegistration;
+  static const fromJsonFactory = _$SignUpCustomRequestFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SignUpCustomRequest &&
+            (identical(other.fullName, fullName) ||
+                const DeepCollectionEquality()
+                    .equals(other.fullName, fullName)) &&
+            (identical(other.bio, bio) ||
+                const DeepCollectionEquality().equals(other.bio, bio)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)) &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)) &&
+            (identical(other.dateRegistration, dateRegistration) ||
+                const DeepCollectionEquality()
+                    .equals(other.dateRegistration, dateRegistration)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(fullName) ^
+      const DeepCollectionEquality().hash(bio) ^
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(code) ^
+      const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(dateRegistration) ^
+      runtimeType.hashCode;
+}
+
+extension $SignUpCustomRequestExtension on SignUpCustomRequest {
+  SignUpCustomRequest copyWith(
+      {String? fullName,
+      String? bio,
+      String? email,
+      String? code,
+      String? password,
+      int? dateRegistration}) {
+    return SignUpCustomRequest(
+        fullName: fullName ?? this.fullName,
+        bio: bio ?? this.bio,
+        email: email ?? this.email,
+        code: code ?? this.code,
+        password: password ?? this.password,
+        dateRegistration: dateRegistration ?? this.dateRegistration);
+  }
+
+  SignUpCustomRequest copyWithWrapped(
+      {Wrapped<String>? fullName,
+      Wrapped<String>? bio,
+      Wrapped<String>? email,
+      Wrapped<String>? code,
+      Wrapped<String>? password,
+      Wrapped<int>? dateRegistration}) {
+    return SignUpCustomRequest(
+        fullName: (fullName != null ? fullName.value : this.fullName),
+        bio: (bio != null ? bio.value : this.bio),
+        email: (email != null ? email.value : this.email),
+        code: (code != null ? code.value : this.code),
+        password: (password != null ? password.value : this.password),
+        dateRegistration: (dateRegistration != null
+            ? dateRegistration.value
+            : this.dateRegistration));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class UserInfoListResponse {
   UserInfoListResponse({
     required this.usersList,
@@ -1854,197 +2988,6 @@ extension $UserInfoListResponseExtension on UserInfoListResponse {
     return UserInfoListResponse(
         usersList: (usersList != null ? usersList.value : this.usersList));
   }
-}
-
-String? addDeliveryRequestDeliveryTypeToJson(
-    enums.AddDeliveryRequestDeliveryType? addDeliveryRequestDeliveryType) {
-  return addDeliveryRequestDeliveryType?.value;
-}
-
-enums.AddDeliveryRequestDeliveryType addDeliveryRequestDeliveryTypeFromJson(
-  Object? addDeliveryRequestDeliveryType, [
-  enums.AddDeliveryRequestDeliveryType? defaultValue,
-]) {
-  return enums.AddDeliveryRequestDeliveryType.values
-          .firstWhereOrNull((e) => e.value == addDeliveryRequestDeliveryType) ??
-      defaultValue ??
-      enums.AddDeliveryRequestDeliveryType.swaggerGeneratedUnknown;
-}
-
-List<String> addDeliveryRequestDeliveryTypeListToJson(
-    List<enums.AddDeliveryRequestDeliveryType>?
-        addDeliveryRequestDeliveryType) {
-  if (addDeliveryRequestDeliveryType == null) {
-    return [];
-  }
-
-  return addDeliveryRequestDeliveryType.map((e) => e.value!).toList();
-}
-
-List<enums.AddDeliveryRequestDeliveryType>
-    addDeliveryRequestDeliveryTypeListFromJson(
-  List? addDeliveryRequestDeliveryType, [
-  List<enums.AddDeliveryRequestDeliveryType>? defaultValue,
-]) {
-  if (addDeliveryRequestDeliveryType == null) {
-    return defaultValue ?? [];
-  }
-
-  return addDeliveryRequestDeliveryType
-      .map((e) => addDeliveryRequestDeliveryTypeFromJson(e.toString()))
-      .toList();
-}
-
-List<enums.AddDeliveryRequestDeliveryType>?
-    addDeliveryRequestDeliveryTypeNullableListFromJson(
-  List? addDeliveryRequestDeliveryType, [
-  List<enums.AddDeliveryRequestDeliveryType>? defaultValue,
-]) {
-  if (addDeliveryRequestDeliveryType == null) {
-    return defaultValue;
-  }
-
-  return addDeliveryRequestDeliveryType
-      .map((e) => addDeliveryRequestDeliveryTypeFromJson(e.toString()))
-      .toList();
-}
-
-String? deliveryDeliveryTypeToJson(
-    enums.DeliveryDeliveryType? deliveryDeliveryType) {
-  return deliveryDeliveryType?.value;
-}
-
-enums.DeliveryDeliveryType deliveryDeliveryTypeFromJson(
-  Object? deliveryDeliveryType, [
-  enums.DeliveryDeliveryType? defaultValue,
-]) {
-  return enums.DeliveryDeliveryType.values
-          .firstWhereOrNull((e) => e.value == deliveryDeliveryType) ??
-      defaultValue ??
-      enums.DeliveryDeliveryType.swaggerGeneratedUnknown;
-}
-
-List<String> deliveryDeliveryTypeListToJson(
-    List<enums.DeliveryDeliveryType>? deliveryDeliveryType) {
-  if (deliveryDeliveryType == null) {
-    return [];
-  }
-
-  return deliveryDeliveryType.map((e) => e.value!).toList();
-}
-
-List<enums.DeliveryDeliveryType> deliveryDeliveryTypeListFromJson(
-  List? deliveryDeliveryType, [
-  List<enums.DeliveryDeliveryType>? defaultValue,
-]) {
-  if (deliveryDeliveryType == null) {
-    return defaultValue ?? [];
-  }
-
-  return deliveryDeliveryType
-      .map((e) => deliveryDeliveryTypeFromJson(e.toString()))
-      .toList();
-}
-
-List<enums.DeliveryDeliveryType>? deliveryDeliveryTypeNullableListFromJson(
-  List? deliveryDeliveryType, [
-  List<enums.DeliveryDeliveryType>? defaultValue,
-]) {
-  if (deliveryDeliveryType == null) {
-    return defaultValue;
-  }
-
-  return deliveryDeliveryType
-      .map((e) => deliveryDeliveryTypeFromJson(e.toString()))
-      .toList();
-}
-
-String? deliveryUnitToJson(enums.DeliveryUnit? deliveryUnit) {
-  return deliveryUnit?.value;
-}
-
-enums.DeliveryUnit deliveryUnitFromJson(
-  Object? deliveryUnit, [
-  enums.DeliveryUnit? defaultValue,
-]) {
-  return enums.DeliveryUnit.values
-          .firstWhereOrNull((e) => e.value == deliveryUnit) ??
-      defaultValue ??
-      enums.DeliveryUnit.swaggerGeneratedUnknown;
-}
-
-List<String> deliveryUnitListToJson(List<enums.DeliveryUnit>? deliveryUnit) {
-  if (deliveryUnit == null) {
-    return [];
-  }
-
-  return deliveryUnit.map((e) => e.value!).toList();
-}
-
-List<enums.DeliveryUnit> deliveryUnitListFromJson(
-  List? deliveryUnit, [
-  List<enums.DeliveryUnit>? defaultValue,
-]) {
-  if (deliveryUnit == null) {
-    return defaultValue ?? [];
-  }
-
-  return deliveryUnit.map((e) => deliveryUnitFromJson(e.toString())).toList();
-}
-
-List<enums.DeliveryUnit>? deliveryUnitNullableListFromJson(
-  List? deliveryUnit, [
-  List<enums.DeliveryUnit>? defaultValue,
-]) {
-  if (deliveryUnit == null) {
-    return defaultValue;
-  }
-
-  return deliveryUnit.map((e) => deliveryUnitFromJson(e.toString())).toList();
-}
-
-String? userInfoRolesToJson(enums.UserInfoRoles? userInfoRoles) {
-  return userInfoRoles?.value;
-}
-
-enums.UserInfoRoles userInfoRolesFromJson(
-  Object? userInfoRoles, [
-  enums.UserInfoRoles? defaultValue,
-]) {
-  return enums.UserInfoRoles.values
-          .firstWhereOrNull((e) => e.value == userInfoRoles) ??
-      defaultValue ??
-      enums.UserInfoRoles.swaggerGeneratedUnknown;
-}
-
-List<String> userInfoRolesListToJson(List<enums.UserInfoRoles>? userInfoRoles) {
-  if (userInfoRoles == null) {
-    return [];
-  }
-
-  return userInfoRoles.map((e) => e.value!).toList();
-}
-
-List<enums.UserInfoRoles> userInfoRolesListFromJson(
-  List? userInfoRoles, [
-  List<enums.UserInfoRoles>? defaultValue,
-]) {
-  if (userInfoRoles == null) {
-    return defaultValue ?? [];
-  }
-
-  return userInfoRoles.map((e) => userInfoRolesFromJson(e.toString())).toList();
-}
-
-List<enums.UserInfoRoles>? userInfoRolesNullableListFromJson(
-  List? userInfoRoles, [
-  List<enums.UserInfoRoles>? defaultValue,
-]) {
-  if (userInfoRoles == null) {
-    return defaultValue;
-  }
-
-  return userInfoRoles.map((e) => userInfoRolesFromJson(e.toString())).toList();
 }
 
 String? updateProductRequestTagsToJson(
@@ -2149,6 +3092,61 @@ List<enums.UpdateProductRequestUnit>?
       .toList();
 }
 
+String? updateProductRequestDeliveryTypesToJson(
+    enums.UpdateProductRequestDeliveryTypes?
+        updateProductRequestDeliveryTypes) {
+  return updateProductRequestDeliveryTypes?.value;
+}
+
+enums.UpdateProductRequestDeliveryTypes
+    updateProductRequestDeliveryTypesFromJson(
+  Object? updateProductRequestDeliveryTypes, [
+  enums.UpdateProductRequestDeliveryTypes? defaultValue,
+]) {
+  return enums.UpdateProductRequestDeliveryTypes.values.firstWhereOrNull(
+          (e) => e.value == updateProductRequestDeliveryTypes) ??
+      defaultValue ??
+      enums.UpdateProductRequestDeliveryTypes.swaggerGeneratedUnknown;
+}
+
+List<String> updateProductRequestDeliveryTypesListToJson(
+    List<enums.UpdateProductRequestDeliveryTypes>?
+        updateProductRequestDeliveryTypes) {
+  if (updateProductRequestDeliveryTypes == null) {
+    return [];
+  }
+
+  return updateProductRequestDeliveryTypes.map((e) => e.value!).toList();
+}
+
+List<enums.UpdateProductRequestDeliveryTypes>
+    updateProductRequestDeliveryTypesListFromJson(
+  List? updateProductRequestDeliveryTypes, [
+  List<enums.UpdateProductRequestDeliveryTypes>? defaultValue,
+]) {
+  if (updateProductRequestDeliveryTypes == null) {
+    return defaultValue ?? [];
+  }
+
+  return updateProductRequestDeliveryTypes
+      .map((e) => updateProductRequestDeliveryTypesFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.UpdateProductRequestDeliveryTypes>?
+    updateProductRequestDeliveryTypesNullableListFromJson(
+  List? updateProductRequestDeliveryTypes, [
+  List<enums.UpdateProductRequestDeliveryTypes>? defaultValue,
+]) {
+  if (updateProductRequestDeliveryTypes == null) {
+    return defaultValue;
+  }
+
+  return updateProductRequestDeliveryTypes
+      .map((e) => updateProductRequestDeliveryTypesFromJson(e.toString()))
+      .toList();
+}
+
 String? productTagsToJson(enums.ProductTags? productTags) {
   return productTags?.value;
 }
@@ -2235,6 +3233,56 @@ List<enums.ProductUnit>? productUnitNullableListFromJson(
   }
 
   return productUnit.map((e) => productUnitFromJson(e.toString())).toList();
+}
+
+String? productDeliveryTypesToJson(
+    enums.ProductDeliveryTypes? productDeliveryTypes) {
+  return productDeliveryTypes?.value;
+}
+
+enums.ProductDeliveryTypes productDeliveryTypesFromJson(
+  Object? productDeliveryTypes, [
+  enums.ProductDeliveryTypes? defaultValue,
+]) {
+  return enums.ProductDeliveryTypes.values
+          .firstWhereOrNull((e) => e.value == productDeliveryTypes) ??
+      defaultValue ??
+      enums.ProductDeliveryTypes.swaggerGeneratedUnknown;
+}
+
+List<String> productDeliveryTypesListToJson(
+    List<enums.ProductDeliveryTypes>? productDeliveryTypes) {
+  if (productDeliveryTypes == null) {
+    return [];
+  }
+
+  return productDeliveryTypes.map((e) => e.value!).toList();
+}
+
+List<enums.ProductDeliveryTypes> productDeliveryTypesListFromJson(
+  List? productDeliveryTypes, [
+  List<enums.ProductDeliveryTypes>? defaultValue,
+]) {
+  if (productDeliveryTypes == null) {
+    return defaultValue ?? [];
+  }
+
+  return productDeliveryTypes
+      .map((e) => productDeliveryTypesFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.ProductDeliveryTypes>? productDeliveryTypesNullableListFromJson(
+  List? productDeliveryTypes, [
+  List<enums.ProductDeliveryTypes>? defaultValue,
+]) {
+  if (productDeliveryTypes == null) {
+    return defaultValue;
+  }
+
+  return productDeliveryTypes
+      .map((e) => productDeliveryTypesFromJson(e.toString()))
+      .toList();
 }
 
 String? addProductRequestTagsToJson(
@@ -2335,6 +3383,416 @@ List<enums.AddProductRequestUnit>? addProductRequestUnitNullableListFromJson(
   return addProductRequestUnit
       .map((e) => addProductRequestUnitFromJson(e.toString()))
       .toList();
+}
+
+String? addProductRequestDeliveryTypesToJson(
+    enums.AddProductRequestDeliveryTypes? addProductRequestDeliveryTypes) {
+  return addProductRequestDeliveryTypes?.value;
+}
+
+enums.AddProductRequestDeliveryTypes addProductRequestDeliveryTypesFromJson(
+  Object? addProductRequestDeliveryTypes, [
+  enums.AddProductRequestDeliveryTypes? defaultValue,
+]) {
+  return enums.AddProductRequestDeliveryTypes.values
+          .firstWhereOrNull((e) => e.value == addProductRequestDeliveryTypes) ??
+      defaultValue ??
+      enums.AddProductRequestDeliveryTypes.swaggerGeneratedUnknown;
+}
+
+List<String> addProductRequestDeliveryTypesListToJson(
+    List<enums.AddProductRequestDeliveryTypes>?
+        addProductRequestDeliveryTypes) {
+  if (addProductRequestDeliveryTypes == null) {
+    return [];
+  }
+
+  return addProductRequestDeliveryTypes.map((e) => e.value!).toList();
+}
+
+List<enums.AddProductRequestDeliveryTypes>
+    addProductRequestDeliveryTypesListFromJson(
+  List? addProductRequestDeliveryTypes, [
+  List<enums.AddProductRequestDeliveryTypes>? defaultValue,
+]) {
+  if (addProductRequestDeliveryTypes == null) {
+    return defaultValue ?? [];
+  }
+
+  return addProductRequestDeliveryTypes
+      .map((e) => addProductRequestDeliveryTypesFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.AddProductRequestDeliveryTypes>?
+    addProductRequestDeliveryTypesNullableListFromJson(
+  List? addProductRequestDeliveryTypes, [
+  List<enums.AddProductRequestDeliveryTypes>? defaultValue,
+]) {
+  if (addProductRequestDeliveryTypes == null) {
+    return defaultValue;
+  }
+
+  return addProductRequestDeliveryTypes
+      .map((e) => addProductRequestDeliveryTypesFromJson(e.toString()))
+      .toList();
+}
+
+String? updateDeliveryRequestDeliveryTypeToJson(
+    enums.UpdateDeliveryRequestDeliveryType?
+        updateDeliveryRequestDeliveryType) {
+  return updateDeliveryRequestDeliveryType?.value;
+}
+
+enums.UpdateDeliveryRequestDeliveryType
+    updateDeliveryRequestDeliveryTypeFromJson(
+  Object? updateDeliveryRequestDeliveryType, [
+  enums.UpdateDeliveryRequestDeliveryType? defaultValue,
+]) {
+  return enums.UpdateDeliveryRequestDeliveryType.values.firstWhereOrNull(
+          (e) => e.value == updateDeliveryRequestDeliveryType) ??
+      defaultValue ??
+      enums.UpdateDeliveryRequestDeliveryType.swaggerGeneratedUnknown;
+}
+
+List<String> updateDeliveryRequestDeliveryTypeListToJson(
+    List<enums.UpdateDeliveryRequestDeliveryType>?
+        updateDeliveryRequestDeliveryType) {
+  if (updateDeliveryRequestDeliveryType == null) {
+    return [];
+  }
+
+  return updateDeliveryRequestDeliveryType.map((e) => e.value!).toList();
+}
+
+List<enums.UpdateDeliveryRequestDeliveryType>
+    updateDeliveryRequestDeliveryTypeListFromJson(
+  List? updateDeliveryRequestDeliveryType, [
+  List<enums.UpdateDeliveryRequestDeliveryType>? defaultValue,
+]) {
+  if (updateDeliveryRequestDeliveryType == null) {
+    return defaultValue ?? [];
+  }
+
+  return updateDeliveryRequestDeliveryType
+      .map((e) => updateDeliveryRequestDeliveryTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.UpdateDeliveryRequestDeliveryType>?
+    updateDeliveryRequestDeliveryTypeNullableListFromJson(
+  List? updateDeliveryRequestDeliveryType, [
+  List<enums.UpdateDeliveryRequestDeliveryType>? defaultValue,
+]) {
+  if (updateDeliveryRequestDeliveryType == null) {
+    return defaultValue;
+  }
+
+  return updateDeliveryRequestDeliveryType
+      .map((e) => updateDeliveryRequestDeliveryTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? updateDeliveryRequestPaymentTypeToJson(
+    enums.UpdateDeliveryRequestPaymentType? updateDeliveryRequestPaymentType) {
+  return updateDeliveryRequestPaymentType?.value;
+}
+
+enums.UpdateDeliveryRequestPaymentType updateDeliveryRequestPaymentTypeFromJson(
+  Object? updateDeliveryRequestPaymentType, [
+  enums.UpdateDeliveryRequestPaymentType? defaultValue,
+]) {
+  return enums.UpdateDeliveryRequestPaymentType.values.firstWhereOrNull(
+          (e) => e.value == updateDeliveryRequestPaymentType) ??
+      defaultValue ??
+      enums.UpdateDeliveryRequestPaymentType.swaggerGeneratedUnknown;
+}
+
+List<String> updateDeliveryRequestPaymentTypeListToJson(
+    List<enums.UpdateDeliveryRequestPaymentType>?
+        updateDeliveryRequestPaymentType) {
+  if (updateDeliveryRequestPaymentType == null) {
+    return [];
+  }
+
+  return updateDeliveryRequestPaymentType.map((e) => e.value!).toList();
+}
+
+List<enums.UpdateDeliveryRequestPaymentType>
+    updateDeliveryRequestPaymentTypeListFromJson(
+  List? updateDeliveryRequestPaymentType, [
+  List<enums.UpdateDeliveryRequestPaymentType>? defaultValue,
+]) {
+  if (updateDeliveryRequestPaymentType == null) {
+    return defaultValue ?? [];
+  }
+
+  return updateDeliveryRequestPaymentType
+      .map((e) => updateDeliveryRequestPaymentTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.UpdateDeliveryRequestPaymentType>?
+    updateDeliveryRequestPaymentTypeNullableListFromJson(
+  List? updateDeliveryRequestPaymentType, [
+  List<enums.UpdateDeliveryRequestPaymentType>? defaultValue,
+]) {
+  if (updateDeliveryRequestPaymentType == null) {
+    return defaultValue;
+  }
+
+  return updateDeliveryRequestPaymentType
+      .map((e) => updateDeliveryRequestPaymentTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? deliveryDeliveryTypeToJson(
+    enums.DeliveryDeliveryType? deliveryDeliveryType) {
+  return deliveryDeliveryType?.value;
+}
+
+enums.DeliveryDeliveryType deliveryDeliveryTypeFromJson(
+  Object? deliveryDeliveryType, [
+  enums.DeliveryDeliveryType? defaultValue,
+]) {
+  return enums.DeliveryDeliveryType.values
+          .firstWhereOrNull((e) => e.value == deliveryDeliveryType) ??
+      defaultValue ??
+      enums.DeliveryDeliveryType.swaggerGeneratedUnknown;
+}
+
+List<String> deliveryDeliveryTypeListToJson(
+    List<enums.DeliveryDeliveryType>? deliveryDeliveryType) {
+  if (deliveryDeliveryType == null) {
+    return [];
+  }
+
+  return deliveryDeliveryType.map((e) => e.value!).toList();
+}
+
+List<enums.DeliveryDeliveryType> deliveryDeliveryTypeListFromJson(
+  List? deliveryDeliveryType, [
+  List<enums.DeliveryDeliveryType>? defaultValue,
+]) {
+  if (deliveryDeliveryType == null) {
+    return defaultValue ?? [];
+  }
+
+  return deliveryDeliveryType
+      .map((e) => deliveryDeliveryTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.DeliveryDeliveryType>? deliveryDeliveryTypeNullableListFromJson(
+  List? deliveryDeliveryType, [
+  List<enums.DeliveryDeliveryType>? defaultValue,
+]) {
+  if (deliveryDeliveryType == null) {
+    return defaultValue;
+  }
+
+  return deliveryDeliveryType
+      .map((e) => deliveryDeliveryTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? deliveryPaymentTypeToJson(
+    enums.DeliveryPaymentType? deliveryPaymentType) {
+  return deliveryPaymentType?.value;
+}
+
+enums.DeliveryPaymentType deliveryPaymentTypeFromJson(
+  Object? deliveryPaymentType, [
+  enums.DeliveryPaymentType? defaultValue,
+]) {
+  return enums.DeliveryPaymentType.values
+          .firstWhereOrNull((e) => e.value == deliveryPaymentType) ??
+      defaultValue ??
+      enums.DeliveryPaymentType.swaggerGeneratedUnknown;
+}
+
+List<String> deliveryPaymentTypeListToJson(
+    List<enums.DeliveryPaymentType>? deliveryPaymentType) {
+  if (deliveryPaymentType == null) {
+    return [];
+  }
+
+  return deliveryPaymentType.map((e) => e.value!).toList();
+}
+
+List<enums.DeliveryPaymentType> deliveryPaymentTypeListFromJson(
+  List? deliveryPaymentType, [
+  List<enums.DeliveryPaymentType>? defaultValue,
+]) {
+  if (deliveryPaymentType == null) {
+    return defaultValue ?? [];
+  }
+
+  return deliveryPaymentType
+      .map((e) => deliveryPaymentTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.DeliveryPaymentType>? deliveryPaymentTypeNullableListFromJson(
+  List? deliveryPaymentType, [
+  List<enums.DeliveryPaymentType>? defaultValue,
+]) {
+  if (deliveryPaymentType == null) {
+    return defaultValue;
+  }
+
+  return deliveryPaymentType
+      .map((e) => deliveryPaymentTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? addDeliveryRequestDeliveryTypeToJson(
+    enums.AddDeliveryRequestDeliveryType? addDeliveryRequestDeliveryType) {
+  return addDeliveryRequestDeliveryType?.value;
+}
+
+enums.AddDeliveryRequestDeliveryType addDeliveryRequestDeliveryTypeFromJson(
+  Object? addDeliveryRequestDeliveryType, [
+  enums.AddDeliveryRequestDeliveryType? defaultValue,
+]) {
+  return enums.AddDeliveryRequestDeliveryType.values
+          .firstWhereOrNull((e) => e.value == addDeliveryRequestDeliveryType) ??
+      defaultValue ??
+      enums.AddDeliveryRequestDeliveryType.swaggerGeneratedUnknown;
+}
+
+List<String> addDeliveryRequestDeliveryTypeListToJson(
+    List<enums.AddDeliveryRequestDeliveryType>?
+        addDeliveryRequestDeliveryType) {
+  if (addDeliveryRequestDeliveryType == null) {
+    return [];
+  }
+
+  return addDeliveryRequestDeliveryType.map((e) => e.value!).toList();
+}
+
+List<enums.AddDeliveryRequestDeliveryType>
+    addDeliveryRequestDeliveryTypeListFromJson(
+  List? addDeliveryRequestDeliveryType, [
+  List<enums.AddDeliveryRequestDeliveryType>? defaultValue,
+]) {
+  if (addDeliveryRequestDeliveryType == null) {
+    return defaultValue ?? [];
+  }
+
+  return addDeliveryRequestDeliveryType
+      .map((e) => addDeliveryRequestDeliveryTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.AddDeliveryRequestDeliveryType>?
+    addDeliveryRequestDeliveryTypeNullableListFromJson(
+  List? addDeliveryRequestDeliveryType, [
+  List<enums.AddDeliveryRequestDeliveryType>? defaultValue,
+]) {
+  if (addDeliveryRequestDeliveryType == null) {
+    return defaultValue;
+  }
+
+  return addDeliveryRequestDeliveryType
+      .map((e) => addDeliveryRequestDeliveryTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? addDeliveryRequestPaymentTypeToJson(
+    enums.AddDeliveryRequestPaymentType? addDeliveryRequestPaymentType) {
+  return addDeliveryRequestPaymentType?.value;
+}
+
+enums.AddDeliveryRequestPaymentType addDeliveryRequestPaymentTypeFromJson(
+  Object? addDeliveryRequestPaymentType, [
+  enums.AddDeliveryRequestPaymentType? defaultValue,
+]) {
+  return enums.AddDeliveryRequestPaymentType.values
+          .firstWhereOrNull((e) => e.value == addDeliveryRequestPaymentType) ??
+      defaultValue ??
+      enums.AddDeliveryRequestPaymentType.swaggerGeneratedUnknown;
+}
+
+List<String> addDeliveryRequestPaymentTypeListToJson(
+    List<enums.AddDeliveryRequestPaymentType>? addDeliveryRequestPaymentType) {
+  if (addDeliveryRequestPaymentType == null) {
+    return [];
+  }
+
+  return addDeliveryRequestPaymentType.map((e) => e.value!).toList();
+}
+
+List<enums.AddDeliveryRequestPaymentType>
+    addDeliveryRequestPaymentTypeListFromJson(
+  List? addDeliveryRequestPaymentType, [
+  List<enums.AddDeliveryRequestPaymentType>? defaultValue,
+]) {
+  if (addDeliveryRequestPaymentType == null) {
+    return defaultValue ?? [];
+  }
+
+  return addDeliveryRequestPaymentType
+      .map((e) => addDeliveryRequestPaymentTypeFromJson(e.toString()))
+      .toList();
+}
+
+List<enums.AddDeliveryRequestPaymentType>?
+    addDeliveryRequestPaymentTypeNullableListFromJson(
+  List? addDeliveryRequestPaymentType, [
+  List<enums.AddDeliveryRequestPaymentType>? defaultValue,
+]) {
+  if (addDeliveryRequestPaymentType == null) {
+    return defaultValue;
+  }
+
+  return addDeliveryRequestPaymentType
+      .map((e) => addDeliveryRequestPaymentTypeFromJson(e.toString()))
+      .toList();
+}
+
+String? userInfoRolesToJson(enums.UserInfoRoles? userInfoRoles) {
+  return userInfoRoles?.value;
+}
+
+enums.UserInfoRoles userInfoRolesFromJson(
+  Object? userInfoRoles, [
+  enums.UserInfoRoles? defaultValue,
+]) {
+  return enums.UserInfoRoles.values
+          .firstWhereOrNull((e) => e.value == userInfoRoles) ??
+      defaultValue ??
+      enums.UserInfoRoles.swaggerGeneratedUnknown;
+}
+
+List<String> userInfoRolesListToJson(List<enums.UserInfoRoles>? userInfoRoles) {
+  if (userInfoRoles == null) {
+    return [];
+  }
+
+  return userInfoRoles.map((e) => e.value!).toList();
+}
+
+List<enums.UserInfoRoles> userInfoRolesListFromJson(
+  List? userInfoRoles, [
+  List<enums.UserInfoRoles>? defaultValue,
+]) {
+  if (userInfoRoles == null) {
+    return defaultValue ?? [];
+  }
+
+  return userInfoRoles.map((e) => userInfoRolesFromJson(e.toString())).toList();
+}
+
+List<enums.UserInfoRoles>? userInfoRolesNullableListFromJson(
+  List? userInfoRoles, [
+  List<enums.UserInfoRoles>? defaultValue,
+]) {
+  if (userInfoRoles == null) {
+    return defaultValue;
+  }
+
+  return userInfoRoles.map((e) => userInfoRolesFromJson(e.toString())).toList();
 }
 
 String? changeRoleRequestRoleToJson(
